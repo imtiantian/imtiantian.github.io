@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>mysql常用函数 - 天天的博客</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="/pictures/favicon.ico" rel="icon">
+
+<link rel="canonical" href="/posts/shu-ju-ku/mysql常用函数.html">
+
+        <meta name="author" content="天天" />
+        <meta name="keywords" content="数据库,mysql" />
+        <meta name="description" content="一、数学函数 abs(x) 返回x的绝对值 bin(x) 返回x的二进制（oct返回八进制，hex返回十六进制） ceiling(x) 返回大于x的最小整数值 exp(x) 返回值e（自然对数的底）的x次方 floor(x …" />
+
+        <meta property="og:site_name" content="天天的博客" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="mysql常用函数"/>
+        <meta property="og:url" content="/posts/shu-ju-ku/mysql常用函数.html"/>
+        <meta property="og:description" content="一、数学函数 abs(x) 返回x的绝对值 bin(x) 返回x的二进制（oct返回八进制，hex返回十六进制） ceiling(x) 返回大于x的最小整数值 exp(x) 返回值e（自然对数的底）的x次方 floor(x …"/>
+        <meta property="article:published_time" content="2015-12-19" />
+            <meta property="article:section" content="数据库" />
+            <meta property="article:tag" content="数据库" />
+            <meta property="article:tag" content="mysql" />
+            <meta property="article:author" content="天天" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.journal.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/monokai.css" rel="stylesheet">
+    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+        <link href="/static/css/custom.css" rel="stylesheet">
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+天天的博客            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/">文章</a></li>
+                    <li><a href="/tags.html">标签</a></li>
+                    <li><a href="/categories.html">分类</a></li>
+                    <li><a href="/archives.html">时间线</a></li>
+                         <li><a href="/pages/shu-ji.html">
+                             书籍
+                          </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="/search.html">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <ol class="breadcrumb">
+                <li><a href="" title="天天的博客"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="/category/shu-ju-ku.html" title="数据库">数据库</a></li>
+                <li class="active">mysql常用函数</li>
+            </ol>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/posts/shu-ju-ku/mysql常用函数.html"
+                       rel="bookmark"
+                       title="Permalink to mysql常用函数">
+                        mysql常用函数
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-12-19T13:44:00+08:00"> 2015-12-19（周六）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/shu-ju-ku.html">数据库</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/shu-ju-ku.html">数据库</a>
+        /
+	<a href="/tag/mysql.html">mysql</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p><strong>一、数学函数</strong></p>
+<p><code>abs(x)</code>   返回x的绝对值</p>
+<p><code>bin(x)</code>   返回x的二进制（oct返回八进制，hex返回十六进制）</p>
+<p><code>ceiling(x)</code>   返回大于x的最小整数值</p>
+<p><code>exp(x)</code>   返回值e（自然对数的底）的x次方</p>
+<p><code>floor(x)</code>   返回小于x的最大整数值</p>
+<p><code>greatest(x1,x2,...,xn)</code>返回集合中最大的值</p>
+<p><code>least(x1,x2,...,xn)</code>      返回集合中最小的值</p>
+<p><code>ln(x)</code>                    返回x的自然对数</p>
+<p><code>log(x,y)</code>返回x的以y为底的对数</p>
+<p><code>mod(x,y)</code>                 返回x/y的模（余数）</p>
+<p><code>pi()</code>返回pi的值（圆周率）</p>
+<p><code>rand()</code>返回０到１内的随机值,可以通过提供一个参数(种子)使rand()随机数生成器生成一个指定的值。</p>
+<p><code>round(x,y)</code>返回参数x的四舍五入的有y位小数的值</p>
+<p><code>sign(x)</code> 返回代表数字x的符号的值</p>
+<p><code>sqrt(x)</code> 返回一个数的平方根</p>
+<p><code>truncate(x,y)</code>            返回数字x截短为y位小数的结果</p>
+<hr>
+<p><strong>二、聚合函数(常用于group by从句的select查询中)</strong></p>
+<p><code>avg(col)</code>返回指定列的平均值</p>
+<p><code>count(col)</code>返回指定列中非null值的个数</p>
+<p><code>min(col)</code>返回指定列的最小值</p>
+<p><code>max(col)</code>返回指定列的最大值</p>
+<p><code>sum(col)</code>返回指定列的所有值之和</p>
+<p><code>group_concat(col)</code> 返回由属于一组的列值连接组合而成的结果</p>
+<hr>
+<p><strong>三、字符串函数</strong></p>
+<p><code>ascii(char)</code>返回字符的ascii码值</p>
+<p><code>bit_length(str)</code>返回字符串的比特长度</p>
+<p><code>concat(s1,s2...,sn)</code>将s1,s2...,sn连接成字符串</p>
+<p><code>concat_ws(sep,s1,s2...,sn)</code>将s1,s2...,sn连接成字符串，并用sep字符间隔</p>
+<p><code>insert(str,x,y,instr)</code> 将字符串str从第x位置开始，y个字符长的子串替换为字符串instr，返回结果</p>
+<p><code>find_in_set(str,list)</code>分析逗号分隔的list列表，如果发现str，返回str在list中的位置</p>
+<p><code>lcase(str)</code>或<code>lower(str)</code> 返回将字符串str中所有字符改变为小写后的结果</p>
+<p><code>left(str,x)</code>返回字符串str中最左边的x个字符</p>
+<p><code>length(s)</code>返回字符串str中的字符数</p>
+<p><code>ltrim(str)</code> 从字符串str中切掉开头的空格</p>
+<p><code>position(substr,str)</code> 返回子串substr在字符串str中第一次出现的位置</p>
+<p><code>quote(str)</code> 用反斜杠转义str中的单引号</p>
+<p><code>repeat(str,srchstr,rplcstr)</code>返回字符串str重复x次的结果</p>
+<p><code>reverse(str)</code> 返回颠倒字符串str的结果</p>
+<p><code>right(str,x)</code> 返回字符串str中最右边的x个字符</p>
+<p><code>rtrim(str)</code> 返回字符串str尾部的空格</p>
+<p><code>strcmp(s1,s2)</code>比较字符串s1和s2</p>
+<p><code>trim(str)</code>去除字符串首部和尾部的所有空格</p>
+<p><code>ucase(str)</code>或<code>upper(str)</code> 返回将字符串str中所有字符转变为大写后的结果</p>
+<hr>
+<p><strong>四、日期和时间函数</strong></p>
+<p><code>curdate()</code>或<code>current_date()</code> 返回当前的日期</p>
+<p><code>curtime()</code>或<code>current_time()</code> 返回当前的时间</p>
+<p><code>date_add(date,interval int keyword)</code>返回日期date加上间隔时间int的结果(int必须按照关键字进行格式化),如：<code>select date_add(current_date,interval 6 month)</code>;</p>
+<p><code>date_format(date,fmt)</code>  依照指定的fmt格式格式化日期date值</p>
+<p><code>date_sub(date,interval int keyword)</code>返回日期date加上间隔时间int的结果(int必须按照关键字进行格式化),如：<code>select date_sub(current_date,interval 6 month)</code>;</p>
+<p><code>dayofweek(date)</code>   返回date所代表的一星期中的第几天(1~7)</p>
+<p><code>dayofmonth(date)</code>  返回date是一个月的第几天(1~31)</p>
+<p><code>dayofyear(date)</code>   返回date是一年的第几天(1~366)</p>
+<p><code>dayname(date)</code>   返回date的星期名，如：select dayname(current_date);</p>
+<p><code>from_unixtime(ts,fmt)</code>  根据指定的fmt格式，格式化unix时间戳ts</p>
+<p><code>hour(time)</code>   返回time的小时值(0~23)</p>
+<p><code>minute(time)</code>   返回time的分钟值(0~59)</p>
+<p><code>month(date)</code>   返回date的月份值(1~12)</p>
+<p><code>monthname(date)</code>   返回date的月份名，如：<code>select monthname(current_date)</code>;</p>
+<p><code>now()</code>    返回当前的日期和时间</p>
+<p><code>quarter(date)</code>   返回date在一年中的季度(1~4)，如<code>select quarter(current_date)</code>;</p>
+<p><code>week(date)</code>   返回日期date为一年中第几周(0~53)</p>
+<p><code>year(date)</code>   返回日期date的年份(1000~9999)</p>
+<p>一些示例：
+获取当前系统时间：</p>
+<div class="highlight"><pre><span></span>select from_unixtime(unix_timestamp());
+select extract(year_month from current_date);
+select extract(day_second from current_date);
+select extract(hour_minute from current_date);
+</pre></div>
+
+
+<p>返回两个日期值之间的差值(月数)：</p>
+<div class="highlight"><pre><span></span>select period_diff(200302,199802);
+</pre></div>
+
+
+<p>在mysql中计算年龄：</p>
+<div class="highlight"><pre><span></span>select date_format(from_days(to_days(now())-to_days(birthday)),&#39;%y&#39;)+0 as age from employee;
+</pre></div>
+
+
+<p>这样，如果brithday是未来的年月日的话，计算结果为0。
+下面的sql语句计算员工的绝对年龄，即当birthday是未来的日期时，将得到负值。</p>
+<div class="highlight"><pre><span></span>select date_format(now(), &#39;%y&#39;) - date_format(birthday, &#39;%y&#39;) -(date_format(now(), &#39;00-%m-%d&#39;) \&lt;date_format(birthday, &#39;00-%m-%d&#39;)) as age from employee
+</pre></div>
+
+
+<hr>
+<p><strong>五、加密函数</strong></p>
+<p><code>aes_encrypt(str,key)</code>  返回用密钥key对字符串str利用高级加密标准算法加密后的结果，调用aes_encrypt的结果是一个二进制字符串，以blob类型存储</p>
+<p><code>aes_decrypt(str,key)</code>  返回用密钥key对字符串str利用高级加密标准算法解密后的结果</p>
+<p><code>decode(str,key)</code>   使用key作为密钥解密加密字符串str</p>
+<p><code>encrypt(str,salt)</code>   使用<code>unixcrypt()</code>函数，用关键词salt(一个可以惟一确定口令的字符串，就像钥匙一样)加密字符串str</p>
+<p><code>encode(str,key)</code>   使用key作为密钥加密字符串str，调用<code>encode()</code>的结果是一个二进制字符串，它以blob类型存储</p>
+<p><code>md5()</code>    计算字符串str的md5校验和</p>
+<p><code>password(str)</code>   返回字符串str的加密版本，这个加密过程是不可逆转的，和unix密码加密过程使用不同的算法。</p>
+<p><code>sha()</code>    计算字符串str的安全散列算法(sha)校验和</p>
+<p>示例：</p>
+<div class="highlight"><pre><span></span>select encrypt(&#39;root&#39;,&#39;salt&#39;);
+select encode(&#39;xufeng&#39;,&#39;key&#39;);
+select decode(encode(&#39;xufeng&#39;,&#39;key&#39;),&#39;key&#39;);#加解密放在一起
+select aes_encrypt(&#39;root&#39;,&#39;key&#39;);
+select aes_decrypt(aes_encrypt(&#39;root&#39;,&#39;key&#39;),&#39;key&#39;);
+select md5(&#39;123456&#39;);
+select sha(&#39;123456&#39;);
+</pre></div>
+
+
+<hr>
+<p><strong>六、控制流函数</strong></p>
+<p>mysql有4个函数是用来进行条件操作的，这些函数可以实现sql的条件逻辑，允许开发者将一些应用程序业务逻辑转换到数据库后台。
+mysql控制流函数：
+<code>case when[test1] then [result1]...else [default] end</code>如果testn是真，则返回resultn，否则返回default</p>
+<p><code>case [test] when[val1] then [result]...else [default]end</code>  如果test和valn相等，则返回resultn，否则返回default</p>
+<p><code>if(test,t,f)</code>   如果test是真，返回t；否则返回f</p>
+<p><code>ifnull(arg1,arg2)</code> 如果arg1不是空，返回arg1，否则返回arg2</p>
+<p><code>nullif(arg1,arg2)</code> 如果arg1=arg2返回null；否则返回arg1</p>
+<blockquote>
+<p>这些函数的第一个是ifnull()，它有两个参数，并且对第一个参数进行判断。如果第一个参数不是null，函数就会向调用者返回第一个参数；如果是null,将返回第二个参数。</p>
+</blockquote>
+<p>如：<code>select ifnull(1,2), ifnull(null,10),ifnull(4*null,'false')</code>;</p>
+<blockquote>
+<p>nullif()函数将会检验提供的两个参数是否相等，如果相等，则返回null，如果不相等，就返回第一个参数;</p>
+</blockquote>
+<p>如：<code>select nullif(1,1),nullif('a','b'),nullif(2+3,4+1)</code>;</p>
+<blockquote>
+<p>和许多脚本语言提供的if()函数一样，mysql的if()函数也可以建立一个简单的条件测试，这个函数有三个参数，第一个是要被判断的表达式，如果表达式为真，if()将会返回第二个参数，如果为假，if()将会返回第三个参数。</p>
+</blockquote>
+<p>如：<code>select if(1&lt;10,2,3),if(56&gt;100,'true','false')</code>;</p>
+<blockquote>
+<p>if()函数在只有两种可能结果时才适合使用。然而，在现实世界中，我们可能发现在条件测试中会需要多个分支。在这种情况下，mysql提供了case函数，它和php及perl语言的switch-case条件例程一样。</p>
+</blockquote>
+<p>case函数的格式有些复杂，通常如下所示：</p>
+<div class="highlight"><pre><span></span><span class="k">case</span> <span class="p">[</span><span class="n">expression</span> <span class="n">to</span> <span class="n">be</span> <span class="n">evaluated</span><span class="p">]</span>
+<span class="n">when</span> <span class="p">[</span><span class="n">val</span> <span class="mi">1</span><span class="p">]</span> <span class="n">then</span> <span class="p">[</span><span class="n">result</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">when</span> <span class="p">[</span><span class="n">val</span> <span class="mi">2</span><span class="p">]</span> <span class="n">then</span> <span class="p">[</span><span class="n">result</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">when</span> <span class="p">[</span><span class="n">val</span> <span class="mi">3</span><span class="p">]</span> <span class="n">then</span> <span class="p">[</span><span class="n">result</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">......</span>
+<span class="n">when</span> <span class="p">[</span><span class="n">val</span> <span class="n">n</span><span class="p">]</span> <span class="n">then</span> <span class="p">[</span><span class="n">result</span> <span class="n">n</span><span class="p">]</span>
+<span class="k">else</span> <span class="p">[</span><span class="k">default</span> <span class="n">result</span><span class="p">]</span>
+<span class="n">end</span>
+</pre></div>
+
+
+<p>这里，第一个参数是要被判断的值或表达式，接下来的是一系列的when-then块，每一块的第一个参数指定要比较的值，如果为真，就返回结果。
+所有的when-then块将以else块结束，当end结束了所有外部的case块时，如果前面的每一个块都不匹配就会返回else块指定的默认结果。
+如果没有指定else块，而且所有的when-then比较都不是真，mysql将会返回null。
+case函数还有另外一种句法，有时使用起来非常方便，如下：</p>
+<div class="highlight"><pre><span></span><span class="k">case</span>
+<span class="n">when</span> <span class="p">[</span><span class="n">conditional</span> <span class="n">test</span> <span class="mi">1</span><span class="p">]</span> <span class="n">then</span> <span class="p">[</span><span class="n">result</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">when</span> <span class="p">[</span><span class="n">conditional</span> <span class="n">test</span> <span class="mi">2</span><span class="p">]</span> <span class="n">then</span> <span class="p">[</span><span class="n">result</span> <span class="mi">2</span><span class="p">]</span>
+<span class="k">else</span> <span class="p">[</span><span class="k">default</span> <span class="n">result</span><span class="p">]</span>
+<span class="n">end</span>
+</pre></div>
+
+
+<p>这种条件下，返回的结果取决于相应的条件测试是否为真。
+示例：</p>
+<div class="highlight"><pre><span></span>select case &#39;green&#39;
+     when &#39;red&#39; then &#39;stop&#39;
+     when &#39;green&#39; then &#39;go&#39; end;
+select case 9 when 1 then &#39;a&#39; when 2 then &#39;b&#39; else &#39;n/a&#39; end;
+select case when (2+2)=4 then &#39;ok&#39; when(2+2)&lt;&gt;4 then &#39;not ok&#39; end asstatus;
+select name,if((isactive = 1),&#39;已激活&#39;,&#39;未激活&#39;) as result fromuserlogininfo;
+select fname,lname,(math+sci+lit) as total,
+case when (math+sci+lit) &lt; 50 then &#39;d&#39;
+when (math+sci+lit) between 50 and 150 then &#39;c&#39;
+when (math+sci+lit) between 151 and 250 then &#39;b&#39;
+else &#39;a&#39; end
+as grade from marks;
+select if(encrypt(&#39;sue&#39;,&#39;ts&#39;)=upass,&#39;allow&#39;,&#39;deny&#39;) as loginresultfrom users where uname = &#39;sue&#39;;#一个登陆验证
+</pre></div>
+
+
+<hr>
+<p><strong>七、格式化函数</strong></p>
+<p><code>date_format(date,fmt)</code>  依照字符串fmt格式化日期date值</p>
+<p><code>format(x,y)</code>   把x格式化为以逗号隔开的数字序列，y是结果的小数位数</p>
+<p><code>inet_aton(ip)</code>   返回ip地址的数字表示</p>
+<p><code>inet_ntoa(num)</code>   返回数字所代表的ip地址</p>
+<p><code>time_format(time,fmt)</code>  依照字符串fmt格式化时间time值</p>
+<p>其中最简单的是<code>format()</code>函数，它可以把大的数值格式化为以逗号间隔的易读的序列。</p>
+<p>示例：</p>
+<div class="highlight"><pre><span></span><span class="nt">select</span> <span class="nt">format</span><span class="o">(</span><span class="nt">34234</span><span class="p">.</span><span class="nc">34323432</span><span class="o">,</span><span class="nt">3</span><span class="o">);</span>
+<span class="nt">select</span> <span class="nt">date_format</span><span class="o">(</span><span class="nt">now</span><span class="o">(),</span><span class="s1">&#39;%w,%d %m %y %r&#39;</span><span class="o">);</span>
+<span class="nt">select</span> <span class="nt">date_format</span><span class="o">(</span><span class="nt">now</span><span class="o">(),</span><span class="s1">&#39;%y-%m-%d&#39;</span><span class="o">);</span>
+<span class="nt">select</span> <span class="nt">date_format</span><span class="o">(</span><span class="nt">19990330</span><span class="o">,</span><span class="s1">&#39;%y-%m-%d&#39;</span><span class="o">);</span>
+<span class="nt">select</span> <span class="nt">date_format</span><span class="o">(</span><span class="nt">now</span><span class="o">(),</span><span class="s1">&#39;%h:%i %p&#39;</span><span class="o">);</span>
+<span class="nt">select</span> <span class="nt">inet_aton</span><span class="o">(</span><span class="s1">&#39;10.122.89.47&#39;</span><span class="o">);</span>
+<span class="nt">select</span> <span class="nt">inet_ntoa</span><span class="o">(</span><span class="nt">175790383</span><span class="o">);</span>
+</pre></div>
+
+
+<hr>
+<p><strong>八、类型转化函数</strong></p>
+<p>为了进行数据类型转化，mysql提供了<code>cast()</code>函数，它可以把一个值转化为指定的数据类型。类型有：binary,char,date,time,datetime,signed,unsigned
+示例：</p>
+<div class="highlight"><pre><span></span>select cast(now() as signed integer),curdate()+0;
+select &#39;f&#39;=binary &#39;f&#39;,&#39;f&#39;=cast(&#39;f&#39; as binary);
+</pre></div>
+
+
+<hr>
+<p><strong>九、系统信息函数</strong></p>
+<p><code>database()</code>   返回当前数据库名</p>
+<p><code>benchmark(count,expr)</code>  将表达式expr重复运行count次</p>
+<p><code>connection_id()</code>   返回当前客户的连接id</p>
+<p><code>found_rows()</code>   返回最后一个select查询进行检索的总行数</p>
+<p><code>user()</code>或<code>system_user()</code>  返回当前登陆用户名</p>
+<p><code>version()</code>   返回mysql服务器的版本</p>
+<p>示例：</p>
+<div class="highlight"><pre><span></span>select database(),version(),user();
+select benchmark(9999999,log(rand()*pi()));#该例中,mysql计算log(rand()*pi())表达式9999999次。
+</pre></div>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=Uionfyg6OyU3PBIjI3wxPT8"><i class="fa fa-envelope fa-lg"></i> 给我写信</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Categories -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4>
+  <ul class="list-group" id="categories">
+    <li class="list-group-item">
+      <a href="/category/linux.html"><i class="fa fa-folder-open fa-lg"></i>linux</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/php.html"><i class="fa fa-folder-open fa-lg"></i>php</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/python.html"><i class="fa fa-folder-open fa-lg"></i>python</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/qi-ta.html"><i class="fa fa-folder-open fa-lg"></i>其他</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/shu-ju-ku.html"><i class="fa fa-folder-open fa-lg"></i>数据库</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Categories -->
+
+<!-- Sidebar/Tag Cloud -->
+<li class="list-group-item">
+  <a href="/tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+  <ul class="list-group list-inline tagcloud" id="tags">
+    <li class="list-group-item tag-4">
+      <a href="/tag/ce-lue-mo-shi.html">策略模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/cgi.html">cgi</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/crontab.html">crontab</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/curl.html">curl</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/dan-li-mo-shi.html">单例模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/ding-shi-ren-wu.html">定时任务</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/django.html">django</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/git.html">git</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/gong-han-mo-shi.html">工厂模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/gua-pei-qi-mo-shi.html">适配器模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/guan-cha-zhe-mo-shi.html">观察者模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/json.html">json</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="/tag/linux.html">linux</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/mo-zhu-fang-fa.html">魔术方法</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/mysql.html">mysql</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="/tag/php.html">php</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/python.html">python</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/shu-ju-ku.html">数据库</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/shu-ju-ying-she-mo-shi.html">数据映射模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/zhu-ce-shu-mo-shi.html">注册树模式</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Tag Cloud -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://python.usyiyi.cn/translate/django_182/index.html" target="_blank">Django 1.8.2 中文文档</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.usyiyi.cn/translate/python_352/index.html" target="_blank">Python 3.5.2 中文文档</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 天天
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <script src="/static/js/custom.js"></script>
+
+    <script src="/theme/js/bodypadding.js"></script>
+
+
+</body>
+</html>

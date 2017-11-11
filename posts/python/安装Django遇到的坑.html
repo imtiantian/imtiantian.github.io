@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>安装Django遇到的坑 - 天天的博客</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="/pictures/favicon.ico" rel="icon">
+
+<link rel="canonical" href="/posts/python/安装Django遇到的坑.html">
+
+        <meta name="author" content="天天" />
+        <meta name="keywords" content="python,django" />
+        <meta name="description" content="用django-admin.py startproject your-project命令创建项目 报错：ImportError: No module named django.core 明明已经安装好了Django，却提示没有Django模块，搞什么鬼？ 最后查阅资料发现，是因为安装了多个版本Python。 解决办法： python3 …" />
+
+        <meta property="og:site_name" content="天天的博客" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="安装Django遇到的坑"/>
+        <meta property="og:url" content="/posts/python/安装Django遇到的坑.html"/>
+        <meta property="og:description" content="用django-admin.py startproject your-project命令创建项目 报错：ImportError: No module named django.core 明明已经安装好了Django，却提示没有Django模块，搞什么鬼？ 最后查阅资料发现，是因为安装了多个版本Python。 解决办法： python3 …"/>
+        <meta property="article:published_time" content="2016-08-05" />
+            <meta property="article:section" content="python" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:tag" content="django" />
+            <meta property="article:author" content="天天" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.journal.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/monokai.css" rel="stylesheet">
+    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+        <link href="/static/css/custom.css" rel="stylesheet">
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+天天的博客            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/">文章</a></li>
+                    <li><a href="/tags.html">标签</a></li>
+                    <li><a href="/categories.html">分类</a></li>
+                    <li><a href="/archives.html">时间线</a></li>
+                         <li><a href="/pages/shu-ji.html">
+                             书籍
+                          </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="/search.html">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <ol class="breadcrumb">
+                <li><a href="" title="天天的博客"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="/category/python.html" title="python">python</a></li>
+                <li class="active">安装Django遇到的坑</li>
+            </ol>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/posts/python/安装Django遇到的坑.html"
+                       rel="bookmark"
+                       title="Permalink to 安装Django遇到的坑">
+                        安装Django遇到的坑
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-08-05T09:20:00+08:00"> 2016-08-05（周五）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/python.html">python</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/python.html">python</a>
+        /
+	<a href="/tag/django.html">django</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>用<code>django-admin.py startproject your-project</code>命令创建项目</p>
+<blockquote>
+<p>报错：ImportError: No module named django.core</p>
+</blockquote>
+<p>明明已经安装好了Django，却提示没有Django模块，搞什么鬼？
+最后查阅资料发现，是因为安装了多个版本Python。
+<strong>解决办法：</strong></p>
+<div class="highlight"><pre><span></span>python3 /usr/local/python3.5.2/lib/python3.5/site-packages/django/bin/django-admin.py startproject your-project
+</pre></div>
+
+
+<blockquote>
+<p>注意：对于window用户，卸载其他版本Python，也可解决问题；但linux用户，万万不可卸载其他版本的Python，必须用上面方法解决。</p>
+</blockquote>
+<hr>
+<p>配置MySQL数据库，用‘pip3 install PyMySQL’命令安装了pymysql扩展，却还是报错</p>
+<blockquote>
+<p>报错：No module named 'MySQLdb'</p>
+</blockquote>
+<p>在__init__.py文件中添加下面代码，即可解决：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymysql</span>
+<span class="n">pymysql</span><span class="o">.</span><span class="n">install_as_MySQLdb</span><span class="p">()</span>
+</pre></div>
+
+
+<hr>
+<p>为了方便测试，在服务器上<code>python manage.py runserver 0.0.0.0:8080</code>，外网却不能通过服务器ip访问，也不报错，后来发现是防火墙的原因，除了指定的端口外，其他端口访问都会被防火墙拒绝，解决办法：</p>
+<div class="highlight"><pre><span></span>iptables -I INPUT 4 -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT
+</pre></div>
+
+
+<p>允许 8080 端口</p>
+<div class="highlight"><pre><span></span>service iptables save
+</pre></div>
+
+
+<p>保存 iptables 规则</p>
+<hr>
+<p>然后再通过“http://139.196.++.+++:8080” 访问，报错了：</p>
+<blockquote>
+<p>报错：You may need to add '139.196.++.+++' to ALLOWED_HOSTS.</p>
+</blockquote>
+<p>解决办法：在setting.py文件中，找到<code>ALLOWED_HOSTS = []</code>,在“[]”中添加你的服务器外网ip地址，如：</p>
+<div class="highlight"><pre><span></span>ALLOWED_HOSTS = [&#39;139.196.++.+++&#39;]
+</pre></div>
+
+
+<p>然后在你本机，通过“http://服务器ip:8080” 就可以访问你服务器上面的Django项目啦</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=Uionfyg6OyU3PBIjI3wxPT8"><i class="fa fa-envelope fa-lg"></i> 给我写信</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Categories -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4>
+  <ul class="list-group" id="categories">
+    <li class="list-group-item">
+      <a href="/category/linux.html"><i class="fa fa-folder-open fa-lg"></i>linux</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/php.html"><i class="fa fa-folder-open fa-lg"></i>php</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/python.html"><i class="fa fa-folder-open fa-lg"></i>python</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/qi-ta.html"><i class="fa fa-folder-open fa-lg"></i>其他</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/shu-ju-ku.html"><i class="fa fa-folder-open fa-lg"></i>数据库</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Categories -->
+
+<!-- Sidebar/Tag Cloud -->
+<li class="list-group-item">
+  <a href="/tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+  <ul class="list-group list-inline tagcloud" id="tags">
+    <li class="list-group-item tag-4">
+      <a href="/tag/ce-lue-mo-shi.html">策略模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/cgi.html">cgi</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/crontab.html">crontab</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/curl.html">curl</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/dan-li-mo-shi.html">单例模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/ding-shi-ren-wu.html">定时任务</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/django.html">django</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/git.html">git</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/gong-han-mo-shi.html">工厂模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/gua-pei-qi-mo-shi.html">适配器模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/guan-cha-zhe-mo-shi.html">观察者模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/json.html">json</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="/tag/linux.html">linux</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/mo-zhu-fang-fa.html">魔术方法</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/mysql.html">mysql</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="/tag/php.html">php</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/python.html">python</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/shu-ju-ku.html">数据库</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/shu-ju-ying-she-mo-shi.html">数据映射模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/zhu-ce-shu-mo-shi.html">注册树模式</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Tag Cloud -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://python.usyiyi.cn/translate/django_182/index.html" target="_blank">Django 1.8.2 中文文档</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.usyiyi.cn/translate/python_352/index.html" target="_blank">Python 3.5.2 中文文档</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 天天
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <script src="/static/js/custom.js"></script>
+
+    <script src="/theme/js/bodypadding.js"></script>
+
+
+</body>
+</html>

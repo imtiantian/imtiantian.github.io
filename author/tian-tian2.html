@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Articles by 天天 - 天天的博客</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="/pictures/favicon.ico" rel="icon">
+
+
+        <meta name="author" content="天天" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="天天的博客" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="天天的博客"/>
+        <meta property="og:url" content=""/>
+        <meta property="og:description" content="天天的博客"/>
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.journal.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/monokai.css" rel="stylesheet">
+    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+        <link href="/static/css/custom.css" rel="stylesheet">
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+天天的博客            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/">文章</a></li>
+                    <li><a href="/tags.html">标签</a></li>
+                    <li><a href="/categories.html">分类</a></li>
+                    <li><a href="/archives.html">时间线</a></li>
+                         <li><a href="/pages/shu-ji.html">
+                             书籍
+                          </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="/search.html">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+        <ol class="breadcrumb">
+            <li><a href="" title="天天的博客"><i class="fa fa-home fa-lg"></i></a></li>
+            <li><a href="/authors.html" title="Authors">Authors</a></li>
+            <li class="active">天天</li>
+        </ol>
+            <article>
+                <h2><a href="/posts/php/php观察者模式.html">php观察者模式</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-20T13:08:00+08:00"> 2016-02-20（周六）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/php.html">php</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/php.html">php</a>
+        /
+	<a href="/tag/guan-cha-zhe-mo-shi.html">观察者模式</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p>当发生一个事件后，可能需要执行多种业务的逻辑操作，这里的每一种逻辑都是一个观察者。</p>
+<hr>
+<p><strong>观察者基类</strong></p>
+<div class="highlight"><pre><span></span>abstract class EventGenerator{
+    private $observers = [];//观察者对象数组
+
+    /*
+     * 添加观察者
+     * */
+    function addObserver(Observer $observer){
+        $this-&gt;observers[] = $observer;
+    }
+
+    /*
+     * 通知观察者
+     * */
+    function …</pre></div>
+                    <a class="btn btn-default btn-xs" href="/posts/php/php观察者模式.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/posts/php/php简单工厂模式.html">php简单工厂模式</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-18T16:34:00+08:00"> 2016-02-18（周四）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/php.html">php</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/php.html">php</a>
+        /
+	<a href="/tag/gong-han-mo-shi.html">工厂模式</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p>有个<strong>Databases</strong>类，传统用法是，哪里需要，哪里<code>new Databases;</code>;这样若<strong>Databases</strong>对象发生了改变，则有实例化<strong>Databases</strong>的地方都要相应改变。</p>
+<p>采用工厂模式实现：</p>
+<div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">*工厂模式</span>
+<span class="cm">**/</span>
+<span class="kr">class</span> <span class="nx">Factory</span><span class="p">{</span>
+    <span class="kr">static</span> <span class="kd">function …</span></pre></div>
+                    <a class="btn btn-default btn-xs" href="/posts/php/php简单工厂模式.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/posts/php/php数据映射模式.html">php数据映射模式</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-16T14:44:00+08:00"> 2016-02-16（周二）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/php.html">php</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/php.html">php</a>
+        /
+	<a href="/tag/shu-ju-ying-she-mo-shi.html">数据映射模式</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p><strong>获取用户id为$id的用户对象</strong></p>
+<div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">*数据映射模式</span>
+<span class="cm">**/</span>
+<span class="kr">class</span> <span class="nx">User</span><span class="p">{</span>
+    <span class="c1">//这里的id,name,age属性和数据库中的字段相对应</span>
+    <span class="kr">public</span> <span class="nx">$id</span><span class="p">;</span>
+    <span class="kr">public</span> <span class="nx">$name</span><span class="p">;</span>
+    <span class="kr">public</span> <span class="nx">$age</span><span class="p">;</span>
+    <span class="kr">protected</span> <span class="nx">$db</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">__construct</span><span class="p">(</span><span class="nx">$id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">$this …</span></pre></div>
+                    <a class="btn btn-default btn-xs" href="/posts/php/php数据映射模式.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/posts/php/php策略模式.html">php策略模式</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-15T15:57:00+08:00"> 2016-02-15（周一）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/php.html">php</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/php.html">php</a>
+        /
+	<a href="/tag/ce-lue-mo-shi.html">策略模式</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p>需求：对于不同的用户展示不同的内容</p>
+<hr>
+<p><strong>定义接口</strong></p>
+<div class="highlight"><pre><span></span><span class="kr">interface</span> <span class="nx">UserStrategy</span><span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">showAd</span><span class="p">();</span><span class="c1">//展示广告</span>
+    <span class="kd">function</span> <span class="nx">showCategory</span><span class="p">();</span><span class="c1">//展示分类</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr>
+<p><strong>普通用户展示的内容</strong></p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">CommonUser</span> <span class="kr">implements</span> <span class="nx">UserStrategy</span><span class="p">{</span>
+    <span class="kr">public</span> <span class="kd">function</span> <span class="nx">showAd</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// TODO …</span></pre></div>
+                    <a class="btn btn-default btn-xs" href="/posts/php/php策略模式.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/posts/php/php适配器模式.html">php适配器模式</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-13T12:45:00+08:00"> 2016-02-13（周六）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/php.html">php</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/php.html">php</a>
+        /
+	<a href="/tag/gua-pei-qi-mo-shi.html">适配器模式</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p>像thinkphp，执行一个数据库查询操作；</p>
+<div class="highlight"><pre><span></span>D(&#39;User&#39;)-&gt;field(&#39;id,name&#39;)-&gt;where([&#39;age&#39;=&gt;[&#39;lt&#39;,18]])-&gt;order(&#39;age desc&#39;)-&gt;select();
+</pre></div>
+
+
+<p>无论你是使用<strong>pdo</strong>或是<strong>mysqli</strong>还或是 …</p>
+                    <a class="btn btn-default btn-xs" href="/posts/php/php适配器模式.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/posts/php/php注册树模式.html">php注册树模式</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-12T09:22:00+08:00"> 2016-02-12（周五）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/php.html">php</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/php.html">php</a>
+        /
+	<a href="/tag/zhu-ce-shu-mo-shi.html">注册树模式</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p>一个对象，可能很多地方需要用到；每用到一次，就new一次，浪费资源。通过注册器模式，初始化的时候注册对象，往后就可以直接获取注册器中的对象，而不用再new。
+<strong>1. 注册器类</strong></p>
+<div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">*注册树模式</span>
+<span class="cm">**/</span>
+<span class="kr">class</span> <span class="nx">Register</span><span class="p">{</span>
+    <span class="kr">protected</span> <span class="kr">static</span> <span class="nx">$objects</span><span class="p">;</span><span class="c1">//对象数组</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * 注册对象</span>
+<span class="cm">     * */</span>
+    <span class="kr">static …</span></pre></div>
+                    <a class="btn btn-default btn-xs" href="/posts/php/php注册树模式.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/posts/php/php单例模式.html">php单例模式</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-11T10:55:00+08:00"> 2016-02-11（周四）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/php.html">php</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/php.html">php</a>
+        /
+	<a href="/tag/dan-li-mo-shi.html">单例模式</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p>通过单例模式获取<code>Databases</code>对象</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Databases</span>
+<span class="p">{</span>
+    <span class="kr">protected</span> <span class="nx">$db</span><span class="p">;</span><span class="c1">//保存当前对象</span>
+
+    <span class="kr">private</span> <span class="kd">function</span> <span class="nx">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//私有的构造方法，意在禁止外部直接new Databases()</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * 实现单列模式</span>
+<span class="cm">     * 若需要调用对象，则通过下面方法调用</span>
+<span class="cm">     * */</span>
+    <span class="kr">static</span> <span class="kd">function</span> <span class="nx">getDatabases …</span></pre></div>
+                    <a class="btn btn-default btn-xs" href="/posts/php/php单例模式.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/posts/php/php常用函数.html">php常用函数</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-02T11:56:00+08:00"> 2016-02-02（周二）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/php.html">php</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/php.html">php</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary">
+                    <a class="btn btn-default btn-xs" href="/posts/php/php常用函数.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+
+        <ul class="pagination">
+                <li class="prev"><a href="/author/tian-tian.html">&laquo;</a>
+                </li>
+                    <li class=""><a
+                            href="/author/tian-tian.html">1</a></li>
+                    <li class="active"><a
+                            href="/author/tian-tian2.html">2</a></li>
+                    <li class=""><a
+                            href="/author/tian-tian3.html">3</a></li>
+                <li class="next"><a
+                        href="/author/tian-tian3.html">&raquo;</a></li>
+        </ul>
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=Uionfyg6OyU3PBIjI3wxPT8"><i class="fa fa-envelope fa-lg"></i> 给我写信</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Categories -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4>
+  <ul class="list-group" id="categories">
+    <li class="list-group-item">
+      <a href="/category/linux.html"><i class="fa fa-folder-open fa-lg"></i>linux</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/php.html"><i class="fa fa-folder-open fa-lg"></i>php</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/python.html"><i class="fa fa-folder-open fa-lg"></i>python</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/qi-ta.html"><i class="fa fa-folder-open fa-lg"></i>其他</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/shu-ju-ku.html"><i class="fa fa-folder-open fa-lg"></i>数据库</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Categories -->
+
+<!-- Sidebar/Tag Cloud -->
+<li class="list-group-item">
+  <a href="/tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+  <ul class="list-group list-inline tagcloud" id="tags">
+    <li class="list-group-item tag-4">
+      <a href="/tag/ce-lue-mo-shi.html">策略模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/cgi.html">cgi</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/crontab.html">crontab</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/curl.html">curl</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/dan-li-mo-shi.html">单例模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/ding-shi-ren-wu.html">定时任务</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/django.html">django</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/git.html">git</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/gong-han-mo-shi.html">工厂模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/gua-pei-qi-mo-shi.html">适配器模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/guan-cha-zhe-mo-shi.html">观察者模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/json.html">json</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="/tag/linux.html">linux</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/mo-zhu-fang-fa.html">魔术方法</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/mysql.html">mysql</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="/tag/php.html">php</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/python.html">python</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/shu-ju-ku.html">数据库</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/shu-ju-ying-she-mo-shi.html">数据映射模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/zhu-ce-shu-mo-shi.html">注册树模式</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Tag Cloud -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://python.usyiyi.cn/translate/django_182/index.html" target="_blank">Django 1.8.2 中文文档</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.usyiyi.cn/translate/python_352/index.html" target="_blank">Python 3.5.2 中文文档</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 天天
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <script src="/static/js/custom.js"></script>
+
+    <script src="/theme/js/bodypadding.js"></script>
+
+
+</body>
+</html>

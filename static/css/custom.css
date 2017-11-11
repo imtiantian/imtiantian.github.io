@@ -1,0 +1,16 @@
+.navbar-search{
+	padding-top:8px;
+}
+#sidebar>aside{
+	box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+}
+.col-sm-9>article{
+	box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+    padding: 15px;
+}
+.breadcrumb{
+	margin-top:20px;
+}
+.tagcloud li {
+    padding: 3px;
+}

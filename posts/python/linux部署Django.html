@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>linux部署Django - 天天的博客</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="/pictures/favicon.ico" rel="icon">
+
+<link rel="canonical" href="/posts/python/linux部署Django.html">
+
+        <meta name="author" content="天天" />
+        <meta name="keywords" content="python,django,linux" />
+        <meta name="description" content="首先，安装uwsgi,命令pip3 install uwsgi; 在nginx.conf配置文件中，http{}的最后加上一行： include vhost/*.conf; 目的是引入vhost文件夹下的配置文件； 在nginx.conf同目录下创建vhost文件夹 …" />
+
+        <meta property="og:site_name" content="天天的博客" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="linux部署Django"/>
+        <meta property="og:url" content="/posts/python/linux部署Django.html"/>
+        <meta property="og:description" content="首先，安装uwsgi,命令pip3 install uwsgi; 在nginx.conf配置文件中，http{}的最后加上一行： include vhost/*.conf; 目的是引入vhost文件夹下的配置文件； 在nginx.conf同目录下创建vhost文件夹 …"/>
+        <meta property="article:published_time" content="2016-10-09" />
+            <meta property="article:section" content="python" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:tag" content="django" />
+            <meta property="article:tag" content="linux" />
+            <meta property="article:author" content="天天" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.journal.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/monokai.css" rel="stylesheet">
+    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+        <link href="/static/css/custom.css" rel="stylesheet">
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+天天的博客            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/">文章</a></li>
+                    <li><a href="/tags.html">标签</a></li>
+                    <li><a href="/categories.html">分类</a></li>
+                    <li><a href="/archives.html">时间线</a></li>
+                         <li><a href="/pages/shu-ji.html">
+                             书籍
+                          </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="/search.html">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <ol class="breadcrumb">
+                <li><a href="" title="天天的博客"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="/category/python.html" title="python">python</a></li>
+                <li class="active">linux部署Django</li>
+            </ol>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/posts/python/linux部署Django.html"
+                       rel="bookmark"
+                       title="Permalink to linux部署Django">
+                        linux部署Django
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-10-09T10:20:00+08:00"> 2016-10-09（周日）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/python.html">python</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/python.html">python</a>
+        /
+	<a href="/tag/django.html">django</a>
+        /
+	<a href="/tag/linux.html">linux</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>首先，安装uwsgi,命令<code>pip3 install uwsgi</code>;</p>
+<p>在nginx.conf配置文件中，<code>http{}</code>的最后加上一行：</p>
+<div class="highlight"><pre><span></span>include vhost/*.conf;
+</pre></div>
+
+
+<p>目的是引入vhost文件夹下的配置文件；
+在<strong>nginx.conf</strong>同目录下创建<strong>vhost</strong>文件夹，用来专门存放你的各种项目应用的配置文件。</p>
+<hr>
+<p>假设你已经创建好了Django应用，名字叫‘djangoceshi’；在<strong>vhost</strong>文件夹下新建<strong>djangoceshi.conf</strong>文件，内容：</p>
+<div class="highlight"><pre><span></span><span class="nt">upstream</span> <span class="nt">djangoceshi</span> <span class="p">{</span>
+  <span class="err">server</span> <span class="n">unix</span><span class="p">:</span><span class="o">///</span><span class="n">tmp</span><span class="o">/</span><span class="n">djangoceshi</span><span class="o">.</span><span class="n">sock</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">server</span> <span class="p">{</span>
+    <span class="err">listen</span> <span class="err">80</span><span class="p">;</span>
+    <span class="err">server_name</span> <span class="err">djangoceshi.xzwphp.com</span><span class="p">;</span>
+    <span class="err">access_log</span> <span class="err">/data/wwwlogs/djangoceshi.xzwphp.com_nginx.log</span> <span class="err">combined</span><span class="p">;</span>
+    <span class="err">index</span> <span class="err">index.html</span> <span class="err">index.htm</span> <span class="err">index.py</span><span class="p">;</span>
+    <span class="err">#include</span> <span class="err">/usr/local/nginx/conf/rewrite/djangoceshi.conf</span><span class="p">;</span>
+    <span class="err">charset</span> <span class="err">utf-8</span><span class="p">;</span>
+    <span class="err">client_max_body_size</span> <span class="err">75M</span><span class="p">;</span>
+
+
+  <span class="err">location</span> <span class="err">/media</span> <span class="err">{</span>
+      <span class="err">alias</span> <span class="err">/data/wwwroot/djangoceshi/media</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nt">location</span> <span class="o">/</span><span class="nt">static</span> <span class="p">{</span>
+      <span class="err">alias</span> <span class="err">/data/wwwroot/djangoceshi/static</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nt">location</span> <span class="o">/</span> <span class="p">{</span>
+    <span class="err">uwsgi_pass</span> <span class="err">djangoceshi</span><span class="p">;</span>
+    <span class="err">include</span> <span class="err">uwsgi_params</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<ul>
+<li><code>#include /usr/local/nginx/conf/rewrite/djangoceshi.conf;</code>这一行引入的是你的<strong>dangoceshi</strong>的路由规则，我在这里注释掉了。</li>
+<li><code>server_name djangoceshi.xzwphp.com;</code>这一行是你解析到服务器ip的域名。</li>
+<li><code>charset utf-8;</code>指定编码。</li>
+<li><code>client_max_body_size 75M;</code>指定最大上传尺寸。</li>
+<li><code>alias /data/wwwroot/djangoceshi/media;</code>指定你的媒体文件目录。</li>
+<li><code>alias /data/wwwroot/djangoceshi/static;</code>指定你的项目的静态资源文件目录，css，js等。</li>
+</ul>
+<hr>
+<p>运行命令<code>nginx -t</code>，查看配置是否有语法错误；然后再输入命令‘nginx -s reload’使修改的配置生效。</p>
+<hr>
+<p>在你的项目所在文件夹，和<strong>manage.py</strong>同目录，创建djangoceshi.ini文件，内容：</p>
+<div class="highlight"><pre><span></span><span class="k">[uwsgi]</span>
+
+<span class="na">chdir</span> <span class="o">=</span> <span class="s">/data/wwwroot/djangoceshi</span>
+<span class="na">module</span> <span class="o">=</span> <span class="s">djangoceshi.wsgi</span>
+
+<span class="na">master</span> <span class="o">=</span> <span class="s">true</span>
+<span class="na">processes</span> <span class="o">=</span> <span class="s">10</span>
+
+<span class="na">socket</span> <span class="o">=</span> <span class="s">/tmp/djangoceshi.sock</span>
+<span class="na">chmod-socket</span> <span class="o">=</span> <span class="s">664</span>
+
+<span class="na">vacuum</span> <span class="o">=</span> <span class="s">true</span>
+
+<span class="na">daemonize</span><span class="o">=</span><span class="s">/data/nginx/wsgilogs/djangoceshi.log</span>
+</pre></div>
+
+
+<ul>
+<li><code>module = djangoceshi.wsgi</code>引入你项目的wsgi.py文件。</li>
+<li><code>chdir = /data/wwwroot/djangoceshi</code>这里写上你项目的所在目录。</li>
+<li><code>daemonize=/data/nginx/wsgilogs/djangoceshi.log</code>记录你项目的uwsgi的运行记录，需要先建好文件夹，不然会报错，找不到目录，我的文件夹是<strong>/data/nginx/wsgilogs/</strong>。</li>
+</ul>
+<hr>
+<p>启动uwsgi：</p>
+<div class="highlight"><pre><span></span>uwsgi --ini /data/wwwroot/djangoceshi/djangoceshi.ini
+</pre></div>
+
+
+<p>然后访问域名<strong>djangoceshi.xzwphp.com</strong>，发现不成功，查看记录文件<strong>djangoceshi.log</strong>发现，报了一个错误：</p>
+<div class="highlight"><pre><span></span>Sun Dec  4 12:57:43 2016 - *** WARNING: you are running uWSGI as root !!! (use the --uid flag) ***
+</pre></div>
+
+
+<hr>
+<p>解决办法：
+创建<strong>www</strong>用户组和<strong>www</strong>用户；</p>
+<div class="highlight"><pre><span></span>/usr/sbin/groupadd www
+/usr/sbin/useradd -g www www
+</pre></div>
+
+
+<p>编辑Nginx的配置文件<strong>nginx.conf</strong>，将第一行修改为<code>user www www;</code>
+去掉下面两行注释：</p>
+<div class="highlight"><pre><span></span>#error_log  logs/error.log;
+#pid        logs/nginx.pid;
+</pre></div>
+
+
+<p>在<strong>djangoceshi.ini</strong>文件中添加两行：</p>
+<div class="highlight"><pre><span></span>uid = www
+gid = www
+</pre></div>
+
+
+<p>如：</p>
+<div class="highlight"><pre><span></span><span class="k">[uwsgi]</span>
+<span class="na">uid</span> <span class="o">=</span> <span class="s">www</span>
+<span class="na">gid</span> <span class="o">=</span> <span class="s">www</span>
+
+<span class="na">chdir</span> <span class="o">=</span> <span class="s">/data/wwwroot/djangoceshi</span>
+
+<span class="na">......</span>
+</pre></div>
+
+
+<p>再输入命令<code>nginx -s reload</code>使修改<strong>nginx.conf</strong>的配置生效;
+启动uwsgi,<code>uwsgi --ini /data/wwwroot/djangoceshi/djangoceshi.ini</code>.</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=Uionfyg6OyU3PBIjI3wxPT8"><i class="fa fa-envelope fa-lg"></i> 给我写信</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Categories -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4>
+  <ul class="list-group" id="categories">
+    <li class="list-group-item">
+      <a href="/category/linux.html"><i class="fa fa-folder-open fa-lg"></i>linux</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/php.html"><i class="fa fa-folder-open fa-lg"></i>php</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/python.html"><i class="fa fa-folder-open fa-lg"></i>python</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/qi-ta.html"><i class="fa fa-folder-open fa-lg"></i>其他</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/shu-ju-ku.html"><i class="fa fa-folder-open fa-lg"></i>数据库</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Categories -->
+
+<!-- Sidebar/Tag Cloud -->
+<li class="list-group-item">
+  <a href="/tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+  <ul class="list-group list-inline tagcloud" id="tags">
+    <li class="list-group-item tag-4">
+      <a href="/tag/ce-lue-mo-shi.html">策略模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/cgi.html">cgi</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/crontab.html">crontab</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/curl.html">curl</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/dan-li-mo-shi.html">单例模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/ding-shi-ren-wu.html">定时任务</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/django.html">django</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/git.html">git</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/gong-han-mo-shi.html">工厂模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/gua-pei-qi-mo-shi.html">适配器模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/guan-cha-zhe-mo-shi.html">观察者模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/json.html">json</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="/tag/linux.html">linux</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/mo-zhu-fang-fa.html">魔术方法</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/mysql.html">mysql</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="/tag/php.html">php</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/python.html">python</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/shu-ju-ku.html">数据库</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/shu-ju-ying-she-mo-shi.html">数据映射模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/zhu-ce-shu-mo-shi.html">注册树模式</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Tag Cloud -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://python.usyiyi.cn/translate/django_182/index.html" target="_blank">Django 1.8.2 中文文档</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.usyiyi.cn/translate/python_352/index.html" target="_blank">Python 3.5.2 中文文档</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 天天
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <script src="/static/js/custom.js"></script>
+
+    <script src="/theme/js/bodypadding.js"></script>
+
+
+</body>
+</html>
