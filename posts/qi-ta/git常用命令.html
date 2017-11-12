@@ -117,8 +117,7 @@
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>[toc]</p>
-<h3 id="_1">创建</h3>
+                <h3 id="_1">创建</h3>
 <p>复制一个已创建的仓库:</p>
 <div class="highlight"><pre><span></span>$ git clone ssh://user@domain.com/repo.git
 </pre></div>
@@ -129,6 +128,7 @@
 </pre></div>
 
 
+<hr>
 <h3 id="_2">本地修改</h3>
 <p>显示工作路径下已修改的文件：</p>
 <div class="highlight"><pre><span></span>$ git status
@@ -183,6 +183,203 @@ git stash pop
 </pre></div>
 
 
+<hr>
+<h3 id="_3">搜索</h3>
+<p>从当前目录的所有文件中查找文本内容：</p>
+<div class="highlight"><pre><span></span>$ git grep <span class="s2">&quot;Hello&quot;</span>
+</pre></div>
+
+
+<p>在某一版本中搜索文本：</p>
+<div class="highlight"><pre><span></span>$ git grep <span class="s2">&quot;Hello&quot;</span> v2.5
+</pre></div>
+
+
+<hr>
+<h3 id="_4">提交历史</h3>
+<p>从最新提交开始，显示所有的提交记录（显示hash， 作者信息，提交的标题和时间）：</p>
+<div class="highlight"><pre><span></span>$ git log
+</pre></div>
+
+
+<p>显示所有提交（仅显示提交的hash和message）：</p>
+<div class="highlight"><pre><span></span>$ git log --oneline
+</pre></div>
+
+
+<p>显示某个用户的所有提交：</p>
+<div class="highlight"><pre><span></span>$ git log --author<span class="o">=</span><span class="s2">&quot;username&quot;</span>
+</pre></div>
+
+
+<p>显示某个文件的所有修改：</p>
+<div class="highlight"><pre><span></span>$ git log -p &lt;file&gt;
+</pre></div>
+
+
+<p>谁，在什么时间，修改了文件的什么内容：</p>
+<div class="highlight"><pre><span></span>$ git blame &lt;file&gt;
+</pre></div>
+
+
+<hr>
+<h3 id="_5">分支与标签</h3>
+<p>列出所有的分支：</p>
+<div class="highlight"><pre><span></span>$ git branch
+</pre></div>
+
+
+<p>切换分支：</p>
+<div class="highlight"><pre><span></span>$ git checkout &lt;branch&gt;
+</pre></div>
+
+
+<p>创建并切换到新分支:</p>
+<div class="highlight"><pre><span></span>$ git checkout -b &lt;branch&gt;
+</pre></div>
+
+
+<p>基于当前分支创建新分支：</p>
+<div class="highlight"><pre><span></span>$ git branch &lt;new-branch&gt;
+</pre></div>
+
+
+<p>基于远程分支创建新的可追溯的分支：</p>
+<div class="highlight"><pre><span></span>$ git branch --track &lt;new-branch&gt; &lt;remote-branch&gt;
+</pre></div>
+
+
+<p>删除本地分支:</p>
+<div class="highlight"><pre><span></span>$ git branch -d &lt;branch&gt;
+</pre></div>
+
+
+<p>给当前版本打标签：</p>
+<div class="highlight"><pre><span></span>$ git tag &lt;tag-name&gt;
+</pre></div>
+
+
+<hr>
+<h3 id="_6">更新与发布</h3>
+<p>列出当前配置的远程端：</p>
+<div class="highlight"><pre><span></span>$ git remote -v
+</pre></div>
+
+
+<p>显示远程端的信息：</p>
+<div class="highlight"><pre><span></span>$ git remote show &lt;remote&gt;
+</pre></div>
+
+
+<p>添加新的远程端：</p>
+<div class="highlight"><pre><span></span>$ git remote add &lt;remote&gt; &lt;url&gt;
+</pre></div>
+
+
+<p>下载远程端版本，但不合并到HEAD中：</p>
+<div class="highlight"><pre><span></span>$ git fetch &lt;remote&gt;
+</pre></div>
+
+
+<p>下载远程端版本，并自动与HEAD版本合并：</p>
+<div class="highlight"><pre><span></span>$ git remote pull &lt;remote&gt; &lt;url&gt;
+</pre></div>
+
+
+<p>将远程端版本合并到本地版本中：</p>
+<div class="highlight"><pre><span></span>$ git pull origin master
+</pre></div>
+
+
+<p>将本地版本发布到远程端：</p>
+<div class="highlight"><pre><span></span>$ git push remote &lt;remote&gt; &lt;branch&gt;
+</pre></div>
+
+
+<p>删除远程端分支：</p>
+<div class="highlight"><pre><span></span>$ git push &lt;remote&gt; :&lt;branch&gt; <span class="o">(</span>since Git v1.5.0<span class="o">)</span>
+或
+git push &lt;remote&gt; --delete &lt;branch&gt; <span class="o">(</span>since Git v1.7.0<span class="o">)</span>
+</pre></div>
+
+
+<p>发布标签:</p>
+<div class="highlight"><pre><span></span>$ git push --tags
+</pre></div>
+
+
+<hr>
+<h3 id="_7">合并与重置</h3>
+<p>将分支合并到当前HEAD中：</p>
+<div class="highlight"><pre><span></span>$ git merge &lt;branch&gt;
+</pre></div>
+
+
+<p>将当前HEAD版本重置到分支中:
+请勿重置已发布的提交!</p>
+<div class="highlight"><pre><span></span>$ git rebase &lt;branch&gt;
+</pre></div>
+
+
+<p>退出重置:</p>
+<div class="highlight"><pre><span></span>$ git rebase --abort
+</pre></div>
+
+
+<p>解决冲突后继续重置：</p>
+<div class="highlight"><pre><span></span>$ git rebase --continue
+</pre></div>
+
+
+<p>使用配置好的merge tool 解决冲突：</p>
+<div class="highlight"><pre><span></span>$ git mergetool
+</pre></div>
+
+
+<p>在编辑器中手动解决冲突后，标记文件为已解决冲突</p>
+<div class="highlight"><pre><span></span>$ git add &lt;resolved-file&gt;
+$ git rm &lt;resolved-file&gt;
+</pre></div>
+
+
+<hr>
+<h3 id="_8">撤销</h3>
+<p>放弃工作目录下的所有修改：</p>
+<div class="highlight"><pre><span></span>$ git reset --hard HEAD
+</pre></div>
+
+
+<p>移除缓存区的所有文件（i.e. 撤销上次git add）:</p>
+<div class="highlight"><pre><span></span>$ git reset HEAD
+</pre></div>
+
+
+<p>放弃某个文件的所有本地修改：</p>
+<div class="highlight"><pre><span></span>$ git checkout HEAD &lt;file&gt;
+</pre></div>
+
+
+<p>重置一个提交（通过创建一个截然不同的新提交）</p>
+<div class="highlight"><pre><span></span>$ git revert &lt;commit&gt;
+</pre></div>
+
+
+<p>将HEAD重置到指定的版本，并抛弃该版本之后的所有修改：</p>
+<div class="highlight"><pre><span></span>$ git reset --hard &lt;commit&gt;
+</pre></div>
+
+
+<p>将HEAD重置到上一次提交的版本，并将之后的修改标记为未添加到缓存区的修改：</p>
+<div class="highlight"><pre><span></span>$ git reset &lt;commit&gt;
+</pre></div>
+
+
+<p>将HEAD重置到上一次提交的版本，并保留未提交的本地修改：</p>
+<div class="highlight"><pre><span></span>$ git reset --keep &lt;commit&gt;
+</pre></div>
+
+
+<h3 id="git">git速查表</h3>
 <p><img alt="git常用命令" src="/images/git-polling-list.png"></p>
             </div>
             <!-- /.entry-content -->
