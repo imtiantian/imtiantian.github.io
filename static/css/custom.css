@@ -1,3 +1,6 @@
+body{
+	font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
 .navbar-search{
 	padding-top:8px;
 }

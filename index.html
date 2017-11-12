@@ -112,7 +112,20 @@
 	<a href="/tag/ding-shi-ren-wu.html">定时任务</a>
     
 </footer><!-- /.post-info -->                    </div>
-                <div class="summary">
+                <div class="summary"><h3 id="crontab">crontab配置文件格式</h3>
+<div class="highlight"><pre><span></span>*  *  *  *  *  COMMAND
+|  |  |  |  |
+|  |  |  |  |__星期0~7，（0或7表示星期天）
+|  |  |  |_____月份1~12
+|  |  |________日期1~31
+|  |___________小时0~23
+|______________分钟0~59
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>小结：
+*表示任何时候都匹配
+可以用“A,B,C”表示A或者B或者C时执行命令 …</pre></div>
                     <a class="btn btn-default btn-xs" href="/posts/linux/crontab定时任务.html">more ...</a>
                 </div>
             </article>

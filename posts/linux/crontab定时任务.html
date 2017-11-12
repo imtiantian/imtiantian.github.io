@@ -14,12 +14,13 @@
 
         <meta name="author" content="天天" />
         <meta name="keywords" content="linux,crontab,定时任务" />
+        <meta name="description" content="crontab配置文件格式 * * * * * COMMAND | | | | | | | | | |__星期0~7，（0或7表示星期天） | | | |_____月份1~12 | | |________日期1~31 | |___________小时0~23 |______________分钟0~59 小结： *表示任何时候都匹配 可以用“A,B,C”表示A或者B或者C时执行命令 …" />
 
         <meta property="og:site_name" content="天天的博客" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="crontab定时任务"/>
         <meta property="og:url" content="/posts/linux/crontab定时任务.html"/>
-        <meta property="og:description" content=""/>
+        <meta property="og:description" content="crontab配置文件格式 * * * * * COMMAND | | | | | | | | | |__星期0~7，（0或7表示星期天） | | | |_____月份1~12 | | |________日期1~31 | |___________小时0~23 |______________分钟0~59 小结： *表示任何时候都匹配 可以用“A,B,C”表示A或者B或者C时执行命令 …"/>
         <meta property="article:published_time" content="2017-03-22" />
             <meta property="article:section" content="linux" />
             <meta property="article:tag" content="linux" />
@@ -123,11 +124,58 @@
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p><img alt="crontab配置" src="/images/crontab配置.jpg"></p>
-<p><img alt="crontab配置文件格式" src="/images/crontab配置文件格式.jpg"></p>
-<p><img alt="crontab举例" src="/images/crontab举例.jpg"></p>
-<p><img alt="crontab举例2" src="/images/crontab举例2.jpg"></p>
-<p><img alt="crontab举例3" src="/images/crontab举例3.jpg"></p>
+                <h3 id="crontab">crontab配置文件格式</h3>
+<div class="highlight"><pre><span></span>*  *  *  *  *  COMMAND
+|  |  |  |  |
+|  |  |  |  |__星期0~7，（0或7表示星期天）
+|  |  |  |_____月份1~12
+|  |  |________日期1~31
+|  |___________小时0~23
+|______________分钟0~59
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>小结：
+*表示任何时候都匹配
+可以用“A,B,C”表示A或者B或者C时执行命令
+可以用“A-B”表示A到B之间时执行命令
+可以用“\*/A”表示每A分钟（小时）等执行一次命令
+</pre></div>
+
+
+<h3 id="_1">例：</h3>
+<p>每晚21:30重启Apache</p>
+<div class="highlight"><pre><span></span>30 21 * * * service httpd restart
+</pre></div>
+
+
+<p>每月1,10,24号的4:45重启Apach</p>
+<div class="highlight"><pre><span></span>45 4 1,10,24 * * service httpd restart
+</pre></div>
+
+
+<p>每月1到10号的4:45重启Apache</p>
+<div class="highlight"><pre><span></span>45 4 1-10 * * service httpd restart
+</pre></div>
+
+
+<p>每隔两分钟重启Apache</p>
+<div class="highlight"><pre><span></span>*/2 * * * * service httpd restart
+
+1-59/2 * * * * service httpd restart
+</pre></div>
+
+
+<p>晚上11点到早上7点之间，每隔一小时重启Apache</p>
+<div class="highlight"><pre><span></span>0 23-7/1 * * * service httpd restart
+</pre></div>
+
+
+<p>每天18:00到23:00之间，每隔30分钟重启Apache</p>
+<div class="highlight"><pre><span></span>0,30 18-23 * * * service httpd restart
+
+0-59/30 18-23 * * * service httpd restart
+</pre></div>
             </div>
             <!-- /.entry-content -->
         </article>
