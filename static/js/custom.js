@@ -10,12 +10,12 @@ $(function(){
 	$('article').find('table').addClass('table table-bordered table-hover');
 
 
-	// 生成index
+	// 生成文章内容目录
 	function articleIndex() {
 		var $article = $('#content>article>.entry-content');
 		var $header = $article.find('h1, h2, h3,h4');
 		if($header.length > 0){
-			var _html = '<div class="panel panel-default widget-outline"><div class="panel-heading" id="hideOutline"><a data-toggle="collapse" href="#collapseDir">目录结构<span class="text-muted pull-right caret"></span></a></div><div id="collapseDir" class="panel-body panel-collapse collapse in"><ul id="articleIndex"></ul></div></div>';
+			var _html = '<div class="panel panel-default widget-outline"><div class="panel-heading" id="hideOutline"><a data-toggle="collapse" href="#collapseDir">目录结构<span class="pull-right glyphicon glyphicon-chevron-down"></span></a></div><div id="collapseDir" class="panel-body panel-collapse collapse in"><ul id="articleIndex"></ul></div></div>';
 			$('#sidebar').prepend(_html);
 			var _tagLevel = 1;                  // 最初的level
 			var _$wrap = $('#articleIndex');    // 最初的wrap
