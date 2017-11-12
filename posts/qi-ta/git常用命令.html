@@ -117,7 +117,73 @@
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p><img alt="git常用命令" src="/images/git-polling-list.png"></p>
+                <p>[toc]</p>
+<h3 id="_1">创建</h3>
+<p>复制一个已创建的仓库:</p>
+<div class="highlight"><pre><span></span>$ git clone ssh://user@domain.com/repo.git
+</pre></div>
+
+
+<p>创建一个新的本地仓库:</p>
+<div class="highlight"><pre><span></span>$ git init
+</pre></div>
+
+
+<h3 id="_2">本地修改</h3>
+<p>显示工作路径下已修改的文件：</p>
+<div class="highlight"><pre><span></span>$ git status
+</pre></div>
+
+
+<p>显示与上次提交版本文件的不同：</p>
+<div class="highlight"><pre><span></span>$ git diff
+</pre></div>
+
+
+<p>把当前所有修改添加到下次提交中：</p>
+<div class="highlight"><pre><span></span>$ git add
+</pre></div>
+
+
+<p>把对某个文件的修改添加到下次提交中：</p>
+<div class="highlight"><pre><span></span>$ git add -p &lt;file&gt;
+</pre></div>
+
+
+<p>提交本地的所有修改：</p>
+<div class="highlight"><pre><span></span>$ git commit -a
+</pre></div>
+
+
+<p>提交之前已标记的变化：</p>
+<div class="highlight"><pre><span></span>$ git commit
+</pre></div>
+
+
+<p>附加消息提交：</p>
+<div class="highlight"><pre><span></span>$ git commit -m <span class="s1">&#39;message here&#39;</span>
+</pre></div>
+
+
+<p>提交，并将提交时间设置为之前的某个日期:</p>
+<div class="highlight"><pre><span></span>git commit --date=&quot;`date --date=&#39;n day ago&#39;`&quot; -am &quot;Commit Message&quot;
+</pre></div>
+
+
+<p>修改上次提交
+请勿修改已发布的提交记录!</p>
+<div class="highlight"><pre><span></span>$ git commit --amend
+</pre></div>
+
+
+<p>把当前分支中未提交的修改移动到其他分支</p>
+<div class="highlight"><pre><span></span>git stash
+git checkout branch2
+git stash pop
+</pre></div>
+
+
+<p><img alt="git常用命令" src="/images/git-polling-list.png"></p>
             </div>
             <!-- /.entry-content -->
         </article>
