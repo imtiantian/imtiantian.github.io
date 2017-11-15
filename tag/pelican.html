@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="chinese (simplified)" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>其他 - 天天的博客</title>
+    <title>pelican - 天天的博客</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -12,7 +12,7 @@
 
 
     <meta name="author" content="天天" />
-    <meta name="keywords" content="其他" />
+    <meta name="keywords" content="pelican" />
 
     <!-- Open Graph tags -->
         <meta property="og:site_name" content="天天的博客" />
@@ -79,49 +79,43 @@
         <div class="col-sm-9">
     <ol class="breadcrumb">
         <li><a href="" title="天天的博客"><i class="fa fa-home fa-lg"></i></a></li>
-        <li><a href="/" title="天天的博客 Categories">Categories</a></li>
-        <li class="active">其他</li>
+        <li><a href="/tags.html" title="Tags">Tags</a></li>
+        <li class="active">pelican</li>
     </ol>
             <article>
-                <h2><a href="/posts/qi-ta/git常用命令.html">git常用命令</a></h2>
+                <h2><a href="/posts/python/使用pelican搭建github pages博客.html">使用pelican搭建github pages博客</a></h2>
                     <div class="well well-sm">
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2016-08-14T15:08:00+08:00"> 2016-08-14（周日）</time>
+        <i class="fa fa-calendar"></i><time datetime="2017-10-19T11:20:00+08:00"> 2017-10-19（周四）</time>
     </span>
 
 
 
         <span class="label label-default">Category</span>
-        <a href="/category/qi-ta.html">其他</a>
+        <a href="/category/python.html">python</a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="/tag/git.html">git</a>
+	<a href="/tag/python.html">python</a>
+        /
+	<a href="/tag/pelican.html">pelican</a>
     
 </footer><!-- /.post-info -->                    </div>
-                <div class="summary"><h3 id="_1">创建</h3>
-<p>复制一个已创建的仓库:</p>
-<div class="highlight"><pre><span></span>$ git clone ssh://user@domain.com/repo.git
+                <div class="summary"><p>打算将博客移到github上，比较过hexo,jekyll,pelican等静态博客生成工具，个人对于Python比较熟悉，于是选择了pelican.</p>
+<h3 id="_1">安装</h3>
+<p>安装pelican</p>
+<div class="highlight"><pre><span></span>pip install pelican
 </pre></div>
 
 
-<p>创建一个新的本地仓库:</p>
-<div class="highlight"><pre><span></span>$ git init
-</pre></div>
-
-
-<hr>
-<h3 id="_2">本地修改</h3>
-<p>显示工作路径下已修改的文件：</p>
-<div class="highlight"><pre><span></span>$ git status
-</pre></div>
-
-
-<p>显示与上次提交版本文件的不同：</p>
-<div class="highlight"><pre><span></span>$ git diff …</pre></div>
-                    <a class="btn btn-default btn-xs" href="/posts/qi-ta/git常用命令.html">more ...</a>
+<p>安装可选包</p>
+<div class="highlight"><pre><span></span>如果您打算使用Markdown作为标记格式，则需要安装Markdown库：
+pip install Markdown
+可以在设置文件中启用排印增强功能，但首先必须安装必需的Typogrify库：
+pip …</pre></div>
+                    <a class="btn btn-default btn-xs" href="/posts/python/使用pelican搭建github pages博客.html">more ...</a>
                 </div>
             </article>
             <hr/>
@@ -259,7 +253,7 @@
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2016 天天
+         <div class="col-xs-10">&copy; 2017 天天
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
