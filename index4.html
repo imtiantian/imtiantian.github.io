@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="chinese (simplified)" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>php观察者模式 - 天天的博客</title>
+    <title>天天的博客</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,22 +10,15 @@
 
     <link href="/pictures/favicon.ico" rel="icon">
 
-<link rel="canonical" href="/posts/php/php观察者模式.html">
-
+<link rel="canonical" href="">
         <meta name="author" content="天天" />
-        <meta name="keywords" content="php,观察者模式" />
-        <meta name="description" content="当发生一个事件后，可能需要执行多种业务的逻辑操作，这里的每一种逻辑都是一个观察者。 观察者基类 abstract class EventGenerator{ private $observers = [];//观察者对象数组 /* * 添加观察者 * */ function addObserver(Observer $observer){ $this-&gt;observers[] = $observer; } /* * 通知观察者 * */ function …" />
 
+    <!-- Open Graph tags -->
         <meta property="og:site_name" content="天天的博客" />
-        <meta property="og:type" content="article"/>
-        <meta property="og:title" content="php观察者模式"/>
-        <meta property="og:url" content="/posts/php/php观察者模式.html"/>
-        <meta property="og:description" content="当发生一个事件后，可能需要执行多种业务的逻辑操作，这里的每一种逻辑都是一个观察者。 观察者基类 abstract class EventGenerator{ private $observers = [];//观察者对象数组 /* * 添加观察者 * */ function addObserver(Observer $observer){ $this-&gt;observers[] = $observer; } /* * 通知观察者 * */ function …"/>
-        <meta property="article:published_time" content="2016-02-20" />
-            <meta property="article:section" content="php" />
-            <meta property="article:tag" content="php" />
-            <meta property="article:tag" content="观察者模式" />
-            <meta property="article:author" content="天天" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="天天的博客"/>
+        <meta property="og:url" content=""/>
+        <meta property="og:description" content="天天的博客"/>
 
 
 
@@ -79,33 +72,30 @@
     </div>
 </div> <!-- /.navbar -->
 <!-- Banner -->
-<!-- End Banner -->
+<style>
+	#banner{
+	    background-image:url("/pictures/banner.jpg");
+	}
+</style>
+
+<div id="banner">
+	<div class="container">
+		<div class="copy">
+			<h1>天天的博客</h1>
+				<p class="intro">自律给我自由</p>
+		</div>
+	</div>
+</div><!-- End Banner -->
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-            <ol class="breadcrumb">
-                <li><a href="" title="天天的博客"><i class="fa fa-home fa-lg"></i></a></li>
-                <li><a href="/category/php.html" title="php">php</a></li>
-                <li class="active">php观察者模式</li>
-            </ol>
-    <section id="content">
-        <article>
-            <header class="page-header">
-                <h1>
-                    <a href="/posts/php/php观察者模式.html"
-                       rel="bookmark"
-                       title="Permalink to php观察者模式">
-                        php观察者模式
-                    </a>
-                </h1>
-            </header>
-            <div class="entry-content">
-                <div class="panel">
-                    <div class="panel-body">
+            <article>
+                <h2><a href="/posts/php/php JSON数据格式化方法.html">php JSON数据格式化方法</a></h2>
+                    <div class="well well-sm">
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2016-02-20T13:08:00+08:00"> 2016-02-20（周六）</time>
+        <i class="fa fa-calendar"></i><time datetime="2015-09-09T15:20:00+08:00"> 2015-09-09（周三）</time>
     </span>
 
 
@@ -117,75 +107,35 @@
 <span class="label label-default">Tags</span>
 	<a href="/tag/php.html">php</a>
         /
-	<a href="/tag/guan-cha-zhe-mo-shi.html">观察者模式</a>
+	<a href="/tag/json.html">json</a>
     
 </footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p>原文链接：<a href="http://blog.csdn.net/fdipzone/article/details/28766357">php JSON数据格式化方法</a></p>
+<hr>
+<p>php 的json_encode能把数组转换为json格式的字符串。字符串没有缩进，中文会转为unicode编码，例如\u975a\u4ed4。人阅读比较困难。现在这个方法在json_encode的基础上再进行一次美化处理。使人能方便阅读内容。</p>
+<hr>
+<p><strong>1. 使用 json_encode 输出</strong></p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nb">header</span><span class="p">(</span><span class="s1">&#39;content-type …</span></pre></div>
+                    <a class="btn btn-default btn-xs" href="/posts/php/php JSON数据格式化方法.html">more ...</a>
                 </div>
-                <p>当发生一个事件后，可能需要执行多种业务的逻辑操作，这里的每一种逻辑都是一个观察者。</p>
-<hr>
-<p><strong>观察者基类</strong></p>
-<div class="highlight"><pre><span></span>abstract class EventGenerator{
-    private $observers = [];//观察者对象数组
+            </article>
+            <hr/>
 
-    /*
-     * 添加观察者
-     * */
-    function addObserver(Observer $observer){
-        $this-&gt;observers[] = $observer;
-    }
-
-    /*
-     * 通知观察者
-     * */
-    function notify(){
-        foreach ($this-&gt;observers as $observer){
-            $observer-&gt;logic();
-        }
-    }
-}
-</pre></div>
-
-
-<hr>
-<p><strong>观察者接口</strong></p>
-<div class="highlight"><pre><span></span><span class="kr">interface</span> <span class="nx">Observer</span><span class="p">{</span>
-    <span class="kd">function</span> <span class="nx">logic</span><span class="p">(</span><span class="nx">$event_info</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<hr>
-<p><strong>触发事件，通知观察者的类</strong></p>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Event</span> <span class="kr">extends</span> <span class="nx">EventGenerator</span><span class="p">{</span>
-    <span class="kd">function</span> <span class="nx">trigger</span><span class="p">(){</span>
-        <span class="nx">echo</span> <span class="s1">&#39;Event&#39;</span><span class="p">;</span><span class="c1">//触发了一个事件</span>
-        <span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">notify</span><span class="p">();</span><span class="c1">//通知观察者</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<hr>
-<p><strong>这是一个观察者</strong></p>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">ObserverOne</span> <span class="kr">implements</span> <span class="nx">Observer</span><span class="p">{</span>
-    <span class="kd">function</span> <span class="nx">logic</span><span class="p">(</span><span class="nx">$event_info</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">){</span>
-        <span class="nx">echo</span> <span class="s1">&#39;逻辑一&#39;</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<hr>
-<p><strong>触发事件</strong></p>
-<div class="highlight"><pre><span></span>$event = new \Event();
-$event-&gt;addObserver(new \ObserverOne());//添加观察者
-$event-&gt;trigger();//触发事件
-</pre></div>
-            </div>
-            <!-- /.entry-content -->
-        </article>
-    </section>
-
+        <ul class="pagination">
+                <li class="prev"><a href="/index3.html">&laquo;</a>
+                </li>
+                    <li class=""><a
+                            href="/index.html">1</a></li>
+                    <li class=""><a
+                            href="/index2.html">2</a></li>
+                    <li class=""><a
+                            href="/index3.html">3</a></li>
+                    <li class="active"><a
+                            href="/index4.html">4</a></li>
+                <li class="next disabled"><a href="#">&raquo;</a></li>
+        </ul>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>

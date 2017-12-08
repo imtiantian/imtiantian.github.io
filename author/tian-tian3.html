@@ -82,6 +82,83 @@
             <li class="active">天天</li>
         </ol>
             <article>
+                <h2><a href="/posts/php/php注册树模式.html">php注册树模式</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-12T09:22:00+08:00"> 2016-02-12（周五）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/php.html">php</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/php.html">php</a>
+        /
+	<a href="/tag/zhu-ce-shu-mo-shi.html">注册树模式</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p>一个对象，可能很多地方需要用到；每用到一次，就new一次，浪费资源。通过注册器模式，初始化的时候注册对象，往后就可以直接获取注册器中的对象，而不用再new。
+<strong>1. 注册器类</strong></p>
+<div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">*注册树模式</span>
+<span class="cm">**/</span>
+<span class="kr">class</span> <span class="nx">Register</span><span class="p">{</span>
+    <span class="kr">protected</span> <span class="kr">static</span> <span class="nx">$objects</span><span class="p">;</span><span class="c1">//对象数组</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * 注册对象</span>
+<span class="cm">     * */</span>
+    <span class="kr">static …</span></pre></div>
+                    <a class="btn btn-default btn-xs" href="/posts/php/php注册树模式.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/posts/php/php单例模式.html">php单例模式</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-11T10:55:00+08:00"> 2016-02-11（周四）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/php.html">php</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/php.html">php</a>
+        /
+	<a href="/tag/dan-li-mo-shi.html">单例模式</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p>通过单例模式获取<code>Databases</code>对象</p>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Databases</span>
+<span class="p">{</span>
+    <span class="kr">protected</span> <span class="nx">$db</span><span class="p">;</span><span class="c1">//保存当前对象</span>
+
+    <span class="kr">private</span> <span class="kd">function</span> <span class="nx">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//私有的构造方法，意在禁止外部直接new Databases()</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * 实现单列模式</span>
+<span class="cm">     * 若需要调用对象，则通过下面方法调用</span>
+<span class="cm">     * */</span>
+    <span class="kr">static</span> <span class="kd">function</span> <span class="nx">getDatabases …</span></pre></div>
+                    <a class="btn btn-default btn-xs" href="/posts/php/php单例模式.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="/posts/php/php常用函数.html">php常用函数</a></h2>
                     <div class="well well-sm">
 <footer class="post-info">
@@ -267,39 +344,6 @@
                 </div>
             </article>
             <hr/>
-            <article>
-                <h2><a href="/posts/php/php JSON数据格式化方法.html">php JSON数据格式化方法</a></h2>
-                    <div class="well well-sm">
-<footer class="post-info">
-    <span class="label label-default">Date</span>
-    <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-09-09T15:20:00+08:00"> 2015-09-09（周三）</time>
-    </span>
-
-
-
-        <span class="label label-default">Category</span>
-        <a href="/category/php.html">php</a>
-
-
-<span class="label label-default">Tags</span>
-	<a href="/tag/php.html">php</a>
-        /
-	<a href="/tag/json.html">json</a>
-    
-</footer><!-- /.post-info -->                    </div>
-                <div class="summary"><p>原文链接：<a href="http://blog.csdn.net/fdipzone/article/details/28766357">php JSON数据格式化方法</a></p>
-<hr>
-<p>php 的json_encode能把数组转换为json格式的字符串。字符串没有缩进，中文会转为unicode编码，例如\u975a\u4ed4。人阅读比较困难。现在这个方法在json_encode的基础上再进行一次美化处理。使人能方便阅读内容。</p>
-<hr>
-<p><strong>1. 使用 json_encode 输出</strong></p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-
-<span class="nb">header</span><span class="p">(</span><span class="s1">&#39;content-type …</span></pre></div>
-                    <a class="btn btn-default btn-xs" href="/posts/php/php JSON数据格式化方法.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
 
         <ul class="pagination">
                 <li class="prev"><a href="/author/tian-tian2.html">&laquo;</a>
@@ -310,7 +354,10 @@
                             href="/author/tian-tian2.html">2</a></li>
                     <li class="active"><a
                             href="/author/tian-tian3.html">3</a></li>
-                <li class="next disabled"><a href="#">&raquo;</a></li>
+                    <li class=""><a
+                            href="/author/tian-tian4.html">4</a></li>
+                <li class="next"><a
+                        href="/author/tian-tian4.html">&raquo;</a></li>
         </ul>
         </div>
         <div class="col-sm-3" id="sidebar">
@@ -406,8 +453,11 @@
     <li class="list-group-item tag-1">
       <a href="/tag/php.html">php</a>
     </li>
-    <li class="list-group-item tag-2">
+    <li class="list-group-item tag-1">
       <a href="/tag/python.html">python</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/redis.html">redis</a>
     </li>
     <li class="list-group-item tag-2">
       <a href="/tag/shu-ju-ku.html">数据库</a>

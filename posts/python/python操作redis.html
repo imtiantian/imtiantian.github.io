@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>python操作redis - 天天的博客</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="/pictures/favicon.ico" rel="icon">
+
+<link rel="canonical" href="/posts/python/python操作redis.html">
+
+        <meta name="author" content="天天" />
+        <meta name="keywords" content="python,redis" />
+        <meta name="description" content="数据类型 Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及zset(sorted set：有序集合)。 1.String（字符串）操作 redis中的String在在内存中按照一个name对应一个value来存储 …" />
+
+        <meta property="og:site_name" content="天天的博客" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="python操作redis"/>
+        <meta property="og:url" content="/posts/python/python操作redis.html"/>
+        <meta property="og:description" content="数据类型 Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及zset(sorted set：有序集合)。 1.String（字符串）操作 redis中的String在在内存中按照一个name对应一个value来存储 …"/>
+        <meta property="article:published_time" content="2017-11-18" />
+            <meta property="article:section" content="python" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:tag" content="redis" />
+            <meta property="article:author" content="天天" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.journal.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/monokai.css" rel="stylesheet">
+    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+        <link href="/static/css/custom.css" rel="stylesheet">
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+天天的博客            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/">文章</a></li>
+                    <li><a href="/tags.html">标签</a></li>
+                    <li><a href="/categories.html">分类</a></li>
+                    <li><a href="/archives.html">时间线</a></li>
+                         <li><a href="/pages/shu-ji.html">
+                             书籍
+                          </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="/search.html">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <ol class="breadcrumb">
+                <li><a href="" title="天天的博客"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="/category/python.html" title="python">python</a></li>
+                <li class="active">python操作redis</li>
+            </ol>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/posts/python/python操作redis.html"
+                       rel="bookmark"
+                       title="Permalink to python操作redis">
+                        python操作redis
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2017-11-18T14:57:00+08:00"> 2017-11-18（周六）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/python.html">python</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/python.html">python</a>
+        /
+	<a href="/tag/redis.html">redis</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h2 id="_1">数据类型</h2>
+<p>Redis支持五种数据类型：<code>string</code>（字符串），<code>hash</code>（哈希），<code>list</code>（列表），<code>set</code>（集合）及<code>zset</code>(sorted set：有序集合)。</p>
+<h3 id="1string">1.<code>String</code>（字符串）操作</h3>
+<blockquote>
+<p>redis中的String在在内存中按照一个name对应一个value来存储</p>
+</blockquote>
+<p><code>set(name, value, ex=None, px=None, nx=False, xx=False)</code>
+在Redis中设置值，不存在则创建，存在则修改</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ex</td>
+<td>过期时间（秒）</td>
+</tr>
+<tr>
+<td>px</td>
+<td>过期时间（毫秒）</td>
+</tr>
+<tr>
+<td>nx</td>
+<td>如果设置为True，则只有name不存在时，当前set操作才执行,同setnx(name, value)</td>
+</tr>
+<tr>
+<td>xx</td>
+<td>如果设置为True，则只有name存在时，当前set操作才执行</td>
+</tr>
+</tbody>
+</table>
+<p><code>setex(name, value, time)</code> 设置过期时间（秒）</p>
+<p><code>psetex(name, time_ms, value)</code> 设置过期时间（豪秒）</p>
+<p><code>mset(name1='***', name2='***',......)</code> 批量设置值</p>
+<p><code>get(name)</code> 获取值</p>
+<p><code>mget(*keys)</code> 批量获取值</p>
+<p><code>getset(name, value)</code> 设置新值，打印原值</p>
+<p><code>getrange(key, start, end)</code> 获取值,并切片，返回切片后的结果</p>
+<p><code>setrange(name, offset, value)</code> 修改字符串内容，从指定字符串索引开始向后替换，如果新值太长时，则向后添加</p>
+<p><code>setbit(name, offset, value)</code> 对二进制表示位进行操作</p>
+<p><code>getbit(name, offset)</code> 获取name对应值的二进制中某位的值(0或1)</p>
+<p><code>bitcount(key, start=None, end=None)</code> 获取对应二进制中1的个数</p>
+<p><code>strlen(name)</code> 返回name对应值的字节长度（一个汉字3个字节）</p>
+<p><code>incr(name, amount=1)</code> 自增name对应的值，当name不存在时，则创建name＝amount，否则，则自增,amount为自增数(整数)</p>
+<p><code>incrbyfloat(name, amount=1.0)</code> 类似<code>incr()</code>自增,amount为自增数(浮点数)</p>
+<p><code>decr(name, amount=1)</code> 自减name对应的值,当name不存在时,则创建name＝amount，否则，则自减，amount为自增数(整数)</p>
+<p><code>append(name, value)</code> 在name对应的值后面追加内容</p>
+<h3 id="2hash">2.<code>Hash</code>（哈希）操作</h3>
+<blockquote>
+<p>redis中的Hash 在内存中类似于一个name对应一个dic来存储</p>
+</blockquote>
+<p><code>hset(name, key, value)</code> name对应的hash中设置一个键值对。不存在，则创建，否则，修改。</p>
+<p><code>hget(name,key)</code> 在name对应的hash中根据key获取value</p>
+<p><code>hgetall(name)</code> 获取name对应hash的所有键值</p>
+<p><code>hmset(name, dict)</code> 在name对应的hash中批量设置键值对</p>
+<p><code>hmget(name, keys)</code> 在name对应的hash中获取多个key的值</p>
+<p><code>hlen(name)</code> 获取hash中键值对的个数</p>
+<p><code>hkeys(name)</code> 获取hash中所有的key的值</p>
+<p><code>hvals(name)</code> 获取hash中所有的value的值</p>
+<p><code>hexists(name, key)</code> 检查name对应的hash是否存在当前传入的key</p>
+<p><code>hdel(name,*keys)</code> 删除指定name对应的key所在的键值对</p>
+<p><code>hincrby(name, key, amount)</code> 自增hash中key对应的值，不存在则创建key=amount(amount为整数)</p>
+<p><code>hincrbyfloat(name, key, amount)</code> 自增hash中key对应的值，不存在则创建key=amount(amount为浮点数)</p>
+<p><code>hscan(name, cursor=0, match=None, count=None)</code></p>
+<p><code>hscan_iter(name, match=None, count=None)</code></p>
+<h3 id="list"><code>List</code>（列表）操作</h3>
+<blockquote>
+<p>redis中的List在在内存中按照一个name对应一个List来存储</p>
+</blockquote>
+<p><code>lpush(name,*values)</code> 在name对应的list中添加元素，每个新的元素都添加到列表的最左边</p>
+<p><code>rpush(name,*values)</code> 同<code>lpush</code>，但每个新的元素都添加到列表的最右边</p>
+<p><code>lpushx(name,value)</code> 在name对应的list中添加元素，只有name已经存在时，值添加到列表的最左边</p>
+<p><code>rpushx(name,value)</code> 在name对应的list中添加元素，只有name已经存在时，值添加到列表的最右边</p>
+<p><code>llen(name)</code> name对应的list元素的个数</p>
+<p><code>linsert(name, where, refvalue, value))</code> 在name对应的列表的某一个值前或后插入一个新值</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>redis的name</td>
+</tr>
+<tr>
+<td>where</td>
+<td>BEFORE（前）或AFTER（后）</td>
+</tr>
+<tr>
+<td>refvalue</td>
+<td>列表内的值</td>
+</tr>
+<tr>
+<td>value</td>
+<td>要插入的数据</td>
+</tr>
+</tbody>
+</table>
+<p><code>r.lset(name, index, value)</code> 对list中的某一个索引位置重新赋值</p>
+<p><code>lrem(name, value, num)</code> 删除name对应的list中的指定值</p>
+<div class="highlight"><pre><span></span>name  ---  redis的name
+value ---  要删除的值
+num   ---  num为0，表示删除列表中所有的指定值；
+           num为n，表示从前到后删除n个；
+           num为-n：从后向前删除n个
+</pre></div>
+
+
+<p><code>lpop(name)</code> 移除列表的左侧第一个元素，返回值是移除的元素</p>
+<p><code>lindex(name, index)</code> 根据索引获取列表内元素</p>
+<p><code>lrange(name, start, end)</code> 分片获取元素</p>
+<p><code>ltrim(name, start, end)</code> 移除列表内没有在该索引之内的值</p>
+<p><code>rpoplpush(src, dst)</code> # 从一个列表取出最右边的元素，同时将其添加至另一个列表的最左边，src要取数据的列表，dst要添加数据的列表</p>
+<p><code>brpoplpush(src, dst, timeout=0)</code> 同rpoplpush，多了个timeout, timeout：取数据的列表没元素后的阻塞时间，0为一直阻塞</p>
+<p><code>blpop(keys, timeout)</code> 将多个列表排列,按照从左到右去移除各个列表内的元素；timeout: 超时时间，获取完所有列表的元素之后，阻塞等待列表内有数据的时间（秒）, 0 表示永远阻塞</p>
+<p><code>brpop(keys, timeout)</code> 同blpop，将多个列表排列,按照从右像左去移除各个列表内的元素</p>
+<h3 id="set"><code>Set</code>（集合）操作</h3>
+<blockquote>
+<p>Set集合就是不允许重复的列表</p>
+</blockquote>
+<p><code>sadd(name,*values)</code> 给name对应的集合中添加元素</p>
+<p><code>smembers(name)</code> 获取name对应的集合的所有成员</p>
+<p><code>scard(name)</code> 获取name对应的集合中的元素个数</p>
+<p><code>sdiff(name, *names)</code> 在第一个name对应的集合中且不在其他name对应的集合的元素集合</p>
+<p>例：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">redis</span><span class="o">,</span><span class="nn">time</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">Redis</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">6379</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">sadd</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">sadd</span><span class="p">(</span><span class="s2">&quot;name1&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">sadd</span><span class="p">(</span><span class="s2">&quot;name2&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sdiff</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="s2">&quot;name1&quot;</span><span class="p">,</span><span class="s2">&quot;name2&quot;</span><span class="p">))</span><span class="c1">#输出:｛a｝</span>
+</pre></div>
+
+
+<p><code>sdiffstore(dest, name, *names)</code> 相当于把<code>sdiff</code>获取的值加入到dest对应的集合中</p>
+<p><code>sinter(*names)</code> 获取多个name对应集合的交集</p>
+<p>例：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">redis</span><span class="o">,</span><span class="nn">time</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">Redis</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">6379</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">sadd</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">sadd</span><span class="p">(</span><span class="s2">&quot;name1&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">sadd</span><span class="p">(</span><span class="s2">&quot;name2&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sinter</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="s2">&quot;name1&quot;</span><span class="p">,</span><span class="s2">&quot;name2&quot;</span><span class="p">))</span><span class="c1">#输出:｛b｝</span>
+</pre></div>
+
+
+<p><code>sinterstore(dest, name, *names)</code> 获取多个name对应集合的交集，再讲其加入到dest对应的集合中；相当于把<code>sinter</code>获取的值加入到dest对应的集合中</p>
+<p><code>sismember(name, value)</code> 检查value是否是name对应的集合内的元素</p>
+<p><code>smove(src, dst, value)</code> 将某个元素从一个集合中移动到另外一个集合</p>
+<p><code>spop(name)</code> 从集合的右侧移除一个元素，并将其返回</p>
+<p><code>srandmember(name, numbers)</code> 从name对应的集合中随机获取numbers个元素</p>
+<p><code>srem(name, *values)</code> 删除name对应的集合中的某些值</p>
+<p><code>sunion(*names)</code> 获取多个name对应的集合的并集</p>
+<p><code>sunionstore(dest,*names)</code> 获取多个name对应的集合的并集，并将结果保存到dest对应的集合中</p>
+<h3 id="zset"><code>zset</code>（有序集合）</h3>
+<blockquote>
+<p>在集合的基础上，为每元素排序，元素的排序需要根据另外一个值来进行比较，所以，对于有序集合，每一个元素有两个值，即：值和分数，分数专门用来做排序</p>
+</blockquote>
+<p><code>zadd(name, *args, **kwargs)</code> 在name对应的有序集合中添加元素</p>
+<p><code>zcard(name)</code> 获取有序集合内元素的数量</p>
+<p><code>zcount(name, min, max)</code> 获取有序集合中分数在min~max之间的个数</p>
+<p><code>zincrby(name, value, amount)</code> 自增有序集合内value对应的分数</p>
+<p><code>zrange( name, start, end, desc=False, withscores=False, score_cast_func=float)</code> 按照索引范围获取name对应的有序集合的元素</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>redis的name</td>
+</tr>
+<tr>
+<td>start</td>
+<td>有序集合索引起始位置</td>
+</tr>
+<tr>
+<td>end</td>
+<td>有序集合索引结束位置</td>
+</tr>
+<tr>
+<td>desc</td>
+<td>排序规则，默认按照分数从小到大排序</td>
+</tr>
+<tr>
+<td>withscores</td>
+<td>是否获取元素的分数，默认只获取元素的值</td>
+</tr>
+<tr>
+<td>score_cast_func</td>
+<td>对分数进行数据转换的函数</td>
+</tr>
+</tbody>
+</table>
+<p><code>zrevrange(name, start, end, withscores=False, score_cast_func=float)</code> 同<code>zrange</code>，集合是从大到小排序的</p>
+<p><code>zrank(name, value)</code> 获取value值在name对应的有序集合中的排行位置（从0开始）</p>
+<p><code>zrevrank(name, value)</code> 同<code>zrank</code>，集合是从大到小排序的</p>
+<p><code>zscore(name, value)</code> 获取name对应有序集合中 value 对应的分数</p>
+<p><code>zrem(name, *values)</code> 删除name对应的有序集合中值是values的成员</p>
+<p><code>zremrangebyrank(name, min, max)</code> 根据排行范围删除</p>
+<p><code>zremrangebyscore(name, min, max)</code> 根据分数范围删除</p>
+<p><code>zinterstore(dest, *keys, aggregate=None)</code> 获取两个有序集合的交集并放入dest集合，如果遇到相同值不同分数，则按照aggregate进行操作。aggregate的值为: SUM  MIN  MAX</p>
+<p><code>zunionstore(dest, keys, aggregate=None)</code> 获取两个有序集合的并集并放入dest集合，其他同<code>zinterstore</code></p>
+<hr>
+<h2 id="_2">其他常用操作</h2>
+<p><code>delete(*names)</code> 根据name删除redis中的任意数据类型</p>
+<p><code>exists(name)</code> 检测redis的name是否存在</p>
+<p><code>keys(pattern='*')</code> 根据* ？等通配符匹配获取redis的name</p>
+<p><code>expire(name ,time)</code> 为某个name设置超时时间</p>
+<p><code>rename(src, dst)</code> 重命名</p>
+<p><code>move(name, db))</code> 将redis的某个值移动到指定的db下</p>
+<p><code>randomkey()</code> 随机获取一个redis的name（不删除）</p>
+<p><code>type(name)</code> 获取name对应值的类型</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=Uionfyg6OyU3PBIjI3wxPT8"><i class="fa fa-envelope fa-lg"></i> 给我写信</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Categories -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4>
+  <ul class="list-group" id="categories">
+    <li class="list-group-item">
+      <a href="/category/linux.html"><i class="fa fa-folder-open fa-lg"></i>linux</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/php.html"><i class="fa fa-folder-open fa-lg"></i>php</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/python.html"><i class="fa fa-folder-open fa-lg"></i>python</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/qi-ta.html"><i class="fa fa-folder-open fa-lg"></i>其他</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/shu-ju-ku.html"><i class="fa fa-folder-open fa-lg"></i>数据库</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Categories -->
+
+<!-- Sidebar/Tag Cloud -->
+<li class="list-group-item">
+  <a href="/tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+  <ul class="list-group list-inline tagcloud" id="tags">
+    <li class="list-group-item tag-4">
+      <a href="/tag/ce-lue-mo-shi.html">策略模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/cgi.html">cgi</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/crontab.html">crontab</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/curl.html">curl</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/dan-li-mo-shi.html">单例模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/ding-shi-ren-wu.html">定时任务</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/django.html">django</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/git.html">git</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/gong-han-mo-shi.html">工厂模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/gua-pei-qi-mo-shi.html">适配器模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/guan-cha-zhe-mo-shi.html">观察者模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/json.html">json</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="/tag/linux.html">linux</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/mo-zhu-fang-fa.html">魔术方法</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/mysql.html">mysql</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/pelican.html">pelican</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="/tag/php.html">php</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="/tag/python.html">python</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/redis.html">redis</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/shu-ju-ku.html">数据库</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/shu-ju-ying-she-mo-shi.html">数据映射模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/zhu-ce-shu-mo-shi.html">注册树模式</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Tag Cloud -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://python.usyiyi.cn/translate/django_182/index.html" target="_blank">Django 1.8.2 中文文档</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.usyiyi.cn/translate/python_352/index.html" target="_blank">Python 3.5.2 中文文档</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 天天
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <script src="/static/js/custom.js"></script>
+
+    <script src="/theme/js/bodypadding.js"></script>
+
+
+</body>
+</html>

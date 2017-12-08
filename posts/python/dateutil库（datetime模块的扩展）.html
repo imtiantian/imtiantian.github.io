@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>dateutil库（datetime模块的扩展） - 天天的博客</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="/pictures/favicon.ico" rel="icon">
+
+<link rel="canonical" href="/posts/python/dateutil库（datetime模块的扩展）.html">
+
+        <meta name="author" content="天天" />
+        <meta name="keywords" content="python" />
+        <meta name="description" content="最近经常需要用Python计算时间日期，如：计算两个日期间的日期列表，函数如下： from datetime import datetime,timedelta def get_date_among_two_date(start_date,end_date): a_day = timedelta(days=1) res = [] while start_date …" />
+
+        <meta property="og:site_name" content="天天的博客" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="dateutil库（datetime模块的扩展）"/>
+        <meta property="og:url" content="/posts/python/dateutil库（datetime模块的扩展）.html"/>
+        <meta property="og:description" content="最近经常需要用Python计算时间日期，如：计算两个日期间的日期列表，函数如下： from datetime import datetime,timedelta def get_date_among_two_date(start_date,end_date): a_day = timedelta(days=1) res = [] while start_date …"/>
+        <meta property="article:published_time" content="2017-12-08" />
+            <meta property="article:section" content="python" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:author" content="天天" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.journal.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/monokai.css" rel="stylesheet">
+    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+        <link href="/static/css/custom.css" rel="stylesheet">
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+天天的博客            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/">文章</a></li>
+                    <li><a href="/tags.html">标签</a></li>
+                    <li><a href="/categories.html">分类</a></li>
+                    <li><a href="/archives.html">时间线</a></li>
+                         <li><a href="/pages/shu-ji.html">
+                             书籍
+                          </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="/search.html">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <ol class="breadcrumb">
+                <li><a href="" title="天天的博客"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="/category/python.html" title="python">python</a></li>
+                <li class="active">dateutil库（datetime模块的扩展）</li>
+            </ol>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/posts/python/dateutil库（datetime模块的扩展）.html"
+                       rel="bookmark"
+                       title="Permalink to dateutil库（datetime模块的扩展）">
+                        dateutil库（datetime模块的扩展）
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2017-12-08T14:43:00+08:00"> 2017-12-08（周五）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/python.html">python</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/python.html">python</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>最近经常需要用Python计算时间日期，如：计算两个日期间的日期列表，函数如下：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span><span class="n">timedelta</span>
+
+<span class="k">def</span> <span class="nf">get_date_among_two_date</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">):</span>
+    <span class="n">a_day</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="n">start_date</span> <span class="o">&lt;=</span> <span class="n">end_date</span><span class="p">:</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">start_date</span><span class="p">)</span>
+        <span class="n">start_date</span> <span class="o">+=</span> <span class="n">a_day</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+
+
+<p>后来了解到了<code>dateutil</code>库，发现用<code>dateutil</code>库实现更为简单,实现如下：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dateutil.rrule</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">get_date_among_two_date</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">rrule</span><span class="p">(</span><span class="n">DAILY</span><span class="p">,</span><span class="n">dtstart</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span><span class="n">until</span><span class="o">=</span><span class="n">end_date</span><span class="p">))</span>
+</pre></div>
+
+
+<hr>
+<h3 id="dateutil"><code>dateutil</code>用法</h3>
+<h4 id="relativedelta"><code>relativedelta</code>（时间偏移）</h4>
+<p>例：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">;</span>
+<span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="n">relativedelta</span>
+
+<span class="c1">#计算指定日期与现在的差值</span>
+<span class="n">now_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">relativedelta</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2003</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">now_date</span><span class="p">)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">结果：relativedelta(years=-14, months=-1, days=-15, hours=-5, minutes=-33, seconds=-38, microseconds=+866005)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1">#计算下个月的今天</span>
+<span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">+</span><span class="n">relativelta</span><span class="p">(</span><span class="n">months</span><span class="o">=+</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+
+<hr>
+<h4 id="parserdatetime"><code>parser</code>（根据字符串解析成datetime）</h4>
+<p>例：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dateutil</span> <span class="kn">import</span> <span class="n">parser</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;2003-09-25T10:49:41&quot;</span><span class="p">)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;20030925T104941&quot;</span><span class="p">)</span>
+
+<span class="c1">#fuzzy开启模糊匹配，过滤掉无法识别的时间日期字符</span>
+<span class="n">parse</span><span class="p">(</span><span class="s2">&quot;this is 12:00:00&quot;</span><span class="p">,</span><span class="n">fuzzy</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">fuzzy_with_tokens开启模糊匹配,返回一个元组</span>
+<span class="sd">其中第一个元素是已解析的datetime</span>
+<span class="sd">第二个元素是一个包含被忽略的字符串的部分的元组</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">parse</span><span class="p">(</span><span class="s1">&#39;this is 12:00:00&#39;</span><span class="p">,</span><span class="n">fuzzy_with_tokens</span> <span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+
+<hr>
+<h4 id="rruledatetime"><code>rrule</code>（根据定义的规则来生成datetime）</h4>
+<blockquote>
+<p>class dateutil.rrule.rrule(freq, dtstart=None, interval=1, wkst=None, count=None, until=None, bysetpos=None, bymonth=None, bymonthday=None, byyearday=None, byeaster=None, byweekno=None, byweekday=None, byhour=None, byminute=None, bysecond=None, cache=False)</p>
+</blockquote>
+<p>freq --- 时间单位。可以是 YEARLY, MONTHLY, WEEKLY, DAILY,HOURLY, MINUTELY, SECONDLY。即年月日周时分秒。</p>
+<p>dtstart --- 开始时间</p>
+<p>until --- 结束时间</p>
+<p>wkst --- 周开始时间。</p>
+<p>interval --- 间隔。</p>
+<p>count --- 指定生成多少个。</p>
+<p>by*** --- 指定匹配的周期。比如byweekday=(MO,TU)则只有周一周二的匹配。byweekday可以指定MO,TU,WE,TH,FR,SA,SU。即周一到周日。</p>
+<p>例：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dateutil.rrule</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1">#计算两日期之间的日期，间隔为3</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">rrule</span><span class="p">(</span><span class="n">DAILY</span><span class="p">,</span><span class="n">interval</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">dtstart</span><span class="o">=</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;2017-12-01&#39;</span><span class="p">),</span><span class="n">until</span><span class="o">=</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;2017-12-24&#39;</span><span class="p">)))</span>
+
+<span class="c1">#计算两日期之间的日期，返回前三个</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">rrule</span><span class="p">(</span><span class="n">DAILY</span><span class="p">,</span><span class="n">count</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">dtstart</span><span class="o">=</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;2017-12-01&#39;</span><span class="p">)))</span>
+
+<span class="c1">#计算两日期之间的周六周天的日期</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">rrule</span><span class="p">(</span><span class="n">DAILY</span><span class="p">,</span><span class="n">byweekday</span><span class="o">=</span><span class="p">(</span><span class="n">SA</span><span class="p">,</span><span class="n">SU</span><span class="p">),</span><span class="n">dtstart</span><span class="o">=</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;2017-12-01&#39;</span><span class="p">),</span><span class="n">until</span><span class="o">=</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;2018-02-24&#39;</span><span class="p">)))</span>
+
+<span class="c1">#按月为单位</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">rrule</span><span class="p">(</span><span class="n">MONTHLY</span><span class="p">,</span><span class="n">dtstart</span><span class="o">=</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;2017-05-19&#39;</span><span class="p">),</span><span class="n">until</span><span class="o">=</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;2017-12-20&#39;</span><span class="p">)))</span>
+</pre></div>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=Uionfyg6OyU3PBIjI3wxPT8"><i class="fa fa-envelope fa-lg"></i> 给我写信</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Categories -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4>
+  <ul class="list-group" id="categories">
+    <li class="list-group-item">
+      <a href="/category/linux.html"><i class="fa fa-folder-open fa-lg"></i>linux</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/php.html"><i class="fa fa-folder-open fa-lg"></i>php</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/python.html"><i class="fa fa-folder-open fa-lg"></i>python</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/qi-ta.html"><i class="fa fa-folder-open fa-lg"></i>其他</a>
+    </li>
+    <li class="list-group-item">
+      <a href="/category/shu-ju-ku.html"><i class="fa fa-folder-open fa-lg"></i>数据库</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Categories -->
+
+<!-- Sidebar/Tag Cloud -->
+<li class="list-group-item">
+  <a href="/tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+  <ul class="list-group list-inline tagcloud" id="tags">
+    <li class="list-group-item tag-4">
+      <a href="/tag/ce-lue-mo-shi.html">策略模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/cgi.html">cgi</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/crontab.html">crontab</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/curl.html">curl</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/dan-li-mo-shi.html">单例模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/ding-shi-ren-wu.html">定时任务</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/django.html">django</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/git.html">git</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/gong-han-mo-shi.html">工厂模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/gua-pei-qi-mo-shi.html">适配器模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/guan-cha-zhe-mo-shi.html">观察者模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/json.html">json</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="/tag/linux.html">linux</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/mo-zhu-fang-fa.html">魔术方法</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/mysql.html">mysql</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/pelican.html">pelican</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="/tag/php.html">php</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="/tag/python.html">python</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/redis.html">redis</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="/tag/shu-ju-ku.html">数据库</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/shu-ju-ying-she-mo-shi.html">数据映射模式</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/zhu-ce-shu-mo-shi.html">注册树模式</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Tag Cloud -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://python.usyiyi.cn/translate/django_182/index.html" target="_blank">Django 1.8.2 中文文档</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.usyiyi.cn/translate/python_352/index.html" target="_blank">Python 3.5.2 中文文档</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 天天
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <script src="/static/js/custom.js"></script>
+
+    <script src="/theme/js/bodypadding.js"></script>
+
+
+</body>
+</html>

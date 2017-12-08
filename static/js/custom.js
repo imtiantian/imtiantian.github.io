@@ -15,8 +15,8 @@ $(function(){
 		var $article = $('#content>article>.entry-content');
 		var $header = $article.find('h1, h2, h3,h4');
 		if($header.length > 0){
-			var _html = '<div class="panel panel-default widget-outline"><div class="panel-heading" id="hideOutline"><a data-toggle="collapse" href="#collapseDir">目录结构<span class="pull-right glyphicon glyphicon-chevron-down"></span></a></div><div id="collapseDir" class="panel-body panel-collapse collapse in"><ul id="articleIndex"></ul></div></div>';
-			$('#sidebar').prepend(_html);
+			var _html = '<div class="panel panel-info widget-outline" style="max-width: 300px;"><div class="panel-heading" id="hideOutline"><a data-toggle="collapse" href="#collapseDir">目录结构</a></div><div id="collapseDir" class="panel-body panel-collapse collapse"><ul id="articleIndex"></ul></div></div>';
+			$('body').prepend(_html);
 			var _tagLevel = 1;                  // 最初的level
 			var _$wrap = $('#articleIndex');    // 最初的wrap
 			$header.each(function(index) {
@@ -46,6 +46,14 @@ $(function(){
 					}
 				}
 				_tagLevel = _tl;
+			});
+			$("#sidebar").css("margin-top","50px");
+			$(".widget-outline").css({
+				"position":"fixed",
+				"top":"60px",
+				"left":$("#sidebar>aside").offset().left,
+				"width":$("#sidebar>aside").width(),
+				"z-index":99999
 			});
 		}
 	}

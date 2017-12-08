@@ -82,6 +82,79 @@
             <li class="active">天天</li>
         </ol>
             <article>
+                <h2><a href="/posts/python/安装Django遇到的坑.html">安装Django遇到的坑</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-08-05T09:20:00+08:00"> 2016-08-05（周五）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/python.html">python</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/python.html">python</a>
+        /
+	<a href="/tag/django.html">django</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><p>用<code>django-admin.py startproject your-project</code>命令创建项目</p>
+<blockquote>
+<p>报错：ImportError: No module named django.core</p>
+</blockquote>
+<p>明明已经安装好了Django，却提示没有Django模块，搞什么鬼？
+最后查阅资料发现，是因为安装了多个版本Python。
+<strong>解决办法：</strong></p>
+<div class="highlight"><pre><span></span>python3 …</pre></div>
+                    <a class="btn btn-default btn-xs" href="/posts/python/安装Django遇到的坑.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/posts/php/php常用魔术方法.html">php常用魔术方法</a></h2>
+                    <div class="well well-sm">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-06-23T12:33:00+08:00"> 2016-06-23（周四）</time>
+    </span>
+
+
+
+        <span class="label label-default">Category</span>
+        <a href="/category/php.html">php</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/php.html">php</a>
+        /
+	<a href="/tag/mo-zhu-fang-fa.html">魔术方法</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                <div class="summary"><div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Ceshi</span><span class="p">{</span>
+    <span class="kr">public</span> <span class="nx">$array</span><span class="p">;</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * 对一个不存在的属性进行赋值时，触发此方法</span>
+<span class="cm">     * */</span>
+    <span class="kd">function</span> <span class="nx">__set</span><span class="p">(</span><span class="nx">$name</span><span class="p">,</span> <span class="nx">$value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// TODO: Implement __set() method.</span>
+        <span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">array</span><span class="p">[</span><span class="nx">$name</span><span class="p">]</span> <span class="o">=</span> <span class="nx">$value</span><span class="p">;</span>
+
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * 获取一个不存在的属性时，触发此方法 …</span></pre></div>
+                    <a class="btn btn-default btn-xs" href="/posts/php/php常用魔术方法.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="/posts/shu-ju-ku/mysql开发技巧-join连表查询.html">mysql开发技巧-join连表查询</a></h2>
                     <div class="well well-sm">
 <footer class="post-info">
@@ -292,83 +365,6 @@
                 </div>
             </article>
             <hr/>
-            <article>
-                <h2><a href="/posts/php/php注册树模式.html">php注册树模式</a></h2>
-                    <div class="well well-sm">
-<footer class="post-info">
-    <span class="label label-default">Date</span>
-    <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2016-02-12T09:22:00+08:00"> 2016-02-12（周五）</time>
-    </span>
-
-
-
-        <span class="label label-default">Category</span>
-        <a href="/category/php.html">php</a>
-
-
-<span class="label label-default">Tags</span>
-	<a href="/tag/php.html">php</a>
-        /
-	<a href="/tag/zhu-ce-shu-mo-shi.html">注册树模式</a>
-    
-</footer><!-- /.post-info -->                    </div>
-                <div class="summary"><p>一个对象，可能很多地方需要用到；每用到一次，就new一次，浪费资源。通过注册器模式，初始化的时候注册对象，往后就可以直接获取注册器中的对象，而不用再new。
-<strong>1. 注册器类</strong></p>
-<div class="highlight"><pre><span></span><span class="cm">/*</span>
-<span class="cm">*注册树模式</span>
-<span class="cm">**/</span>
-<span class="kr">class</span> <span class="nx">Register</span><span class="p">{</span>
-    <span class="kr">protected</span> <span class="kr">static</span> <span class="nx">$objects</span><span class="p">;</span><span class="c1">//对象数组</span>
-
-    <span class="cm">/*</span>
-<span class="cm">     * 注册对象</span>
-<span class="cm">     * */</span>
-    <span class="kr">static …</span></pre></div>
-                    <a class="btn btn-default btn-xs" href="/posts/php/php注册树模式.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2><a href="/posts/php/php单例模式.html">php单例模式</a></h2>
-                    <div class="well well-sm">
-<footer class="post-info">
-    <span class="label label-default">Date</span>
-    <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2016-02-11T10:55:00+08:00"> 2016-02-11（周四）</time>
-    </span>
-
-
-
-        <span class="label label-default">Category</span>
-        <a href="/category/php.html">php</a>
-
-
-<span class="label label-default">Tags</span>
-	<a href="/tag/php.html">php</a>
-        /
-	<a href="/tag/dan-li-mo-shi.html">单例模式</a>
-    
-</footer><!-- /.post-info -->                    </div>
-                <div class="summary"><p>通过单例模式获取<code>Databases</code>对象</p>
-<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Databases</span>
-<span class="p">{</span>
-    <span class="kr">protected</span> <span class="nx">$db</span><span class="p">;</span><span class="c1">//保存当前对象</span>
-
-    <span class="kr">private</span> <span class="kd">function</span> <span class="nx">__construct</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">//私有的构造方法，意在禁止外部直接new Databases()</span>
-    <span class="p">}</span>
-
-    <span class="cm">/*</span>
-<span class="cm">     * 实现单列模式</span>
-<span class="cm">     * 若需要调用对象，则通过下面方法调用</span>
-<span class="cm">     * */</span>
-    <span class="kr">static</span> <span class="kd">function</span> <span class="nx">getDatabases …</span></pre></div>
-                    <a class="btn btn-default btn-xs" href="/posts/php/php单例模式.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
 
         <ul class="pagination">
                 <li class="prev"><a href="/author/tian-tian.html">&laquo;</a>
@@ -379,6 +375,8 @@
                             href="/author/tian-tian2.html">2</a></li>
                     <li class=""><a
                             href="/author/tian-tian3.html">3</a></li>
+                    <li class=""><a
+                            href="/author/tian-tian4.html">4</a></li>
                 <li class="next"><a
                         href="/author/tian-tian3.html">&raquo;</a></li>
         </ul>
@@ -476,8 +474,11 @@
     <li class="list-group-item tag-1">
       <a href="/tag/php.html">php</a>
     </li>
-    <li class="list-group-item tag-2">
+    <li class="list-group-item tag-1">
       <a href="/tag/python.html">python</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="/tag/redis.html">redis</a>
     </li>
     <li class="list-group-item tag-2">
       <a href="/tag/shu-ju-ku.html">数据库</a>
